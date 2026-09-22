@@ -17,6 +17,7 @@
 | **Lecturer** | Sebastián Azócar M., MSc in Data Science |
 | **Contact** | [hizocar@gmail.com](mailto:hizocar@gmail.com) |
 | **Language** | English |
+| **Schedule** | **Fridays, 13:00 – 16:00** · 11 September – 27 November 2026 (11 sessions) |
 | **Tools** | Python · scikit-learn · an AI coding assistant of your choice |
 
 ## 2. Course description
@@ -53,11 +54,32 @@ On completion, students will be able to:
    it, and identify when it is wrong.
 7. **Communicate** results, assumptions and limitations to a non-technical audience.
 
-## 4. Learning methods
+## 4. Learning methods and schedule
 
-Learning by doing. Each session mixes a short conceptual block with hands-on work on a notebook, and
-students are expected to read the assigned material **before** class. A study load of at least three
-hours per week outside the classroom is assumed. All assessed work is project-based.
+Learning by doing. Sessions last **three hours** and follow the same rhythm: a concept block, a
+hands-on lab paired with your assistant, and applied or project work. Students are expected to read
+the assigned material **before** class, and a study load of at least three hours per week outside
+the classroom is assumed. All assessed work is project-based.
+
+### Calendar
+
+| # | Date | Session |
+|---:|---|---|
+| 1 | Fri 11 Sep ✅ | Data and decision making · VS Code and assistant setup |
+| — | Fri 18 Sep | 🇨🇱 *No class — Fiestas Patrias* |
+| 2 | Fri 25 Sep | Data manipulation with pandas |
+| 3 | Fri 2 Oct | What is machine learning? Fitting, KNN, bias–variance |
+| 4 | Fri 9 Oct | The ML pipeline: cross-validation and data leakage · **Project 1 released** |
+| 5 | Fri 16 Oct | Classification I: logistic regression, confusion matrix, ROC |
+| 6 | Fri 23 Oct | **Project 1 presentations** · Classification II: naïve Bayes and text |
+| 7 | Fri 30 Oct | Trees and ensembles · **Project 2 released** |
+| 8 | Fri 6 Nov | Variable selection and shrinkage: LASSO, Ridge, Elastic Net |
+| 9 | Fri 13 Nov | Unlabeled data: PCA and clustering |
+| 10 | Fri 20 Nov | Introduction to neural networks · project clinic |
+| 11 | Fri 27 Nov | **Project 2 final presentations** and course closing |
+
+> 🗓️ The detailed plan for each session, with objectives, labs and notebooks, is on the
+> [Classes](classes/classes.md) page.
 
 ## 5. Course contents
 
@@ -104,11 +126,11 @@ hours per week outside the classroom is assumed. All assessed work is project-ba
 All of the final grade comes from **two projects**. There are no written exams and no separate
 in-class activities.
 
-| Assessment | Weight | What it covers |
-|---|---:|---|
-| **Project 1** — supervised learning on a business problem | **40%** | Contents A, B and C |
-| **Project 2** — end-to-end ML case, student-chosen data | **60%** | All contents, including D–G |
-| **Total** | **100%** | |
+| Assessment | Weight | Covers | Due | Presented |
+|---|---:|---|---|---|
+| **Project 1** — supervised learning on a business problem | **40%** | Contents A, B, C | Thu 22 Oct, 23:59 | Fri 23 Oct |
+| **Project 2** — end-to-end ML case, student-chosen data | **60%** | All contents, D–G included | Thu 26 Nov, 23:59 | Fri 27 Nov |
+| **Total** | **100%** | | | |
 
 Each project is delivered as a **reproducible notebook + short report + live presentation**, and
 includes a mandatory **assistant log**: which tool you used, for what, and what you had to correct.

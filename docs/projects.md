@@ -17,7 +17,9 @@ correct.</p>
 | **Covers** | Contents A, B, C | All contents, including D–G |
 | **Team** | Groups of 2–3 | Same groups |
 | **Delivery** | Notebook + report + presentation | Notebook + report + presentation |
-| **When** | After Session 5 | Final sessions |
+| **Released** | Friday 9 October (Session 4) | Friday 30 October (Session 7) |
+| **Due** | Thursday 22 October, 23:59 | Thursday 26 November, 23:59 |
+| **Presented** | Friday 23 October, in class | Friday 27 November, in class |
 
 ```text
 Final grade = 0.40 × Project 1 + 0.60 × Project 2
@@ -56,12 +58,14 @@ model you can defend — including how you evaluated it and what it would mean t
 6. **Interpret.** Which variables drive the prediction, and does that make business sense?
 7. **Write the assistant log** (see [Code Assistants](code-assistants.md#the-assistant-log-required-in-both-projects)).
 
-**Deliverables**
+**Deliverables and deadline**
 
 - [ ] Reproducible notebook — runs top to bottom from a clean kernel.
 - [ ] Report of **max. 4 pages**: problem, data, method, results, limitations.
 - [ ] Assistant log (half a page).
-- [ ] Presentation of **10 minutes** + questions.
+- [ ] Presentation of **10 minutes** + questions, in class on **Friday 23 October**.
+
+**Due:** Thursday 22 October 2026, 23:59 · subject `Project 1 – Group name`.
 
 **Grading rubric**
 
@@ -102,12 +106,14 @@ recommendation, using the full toolbox of the course.
    next.
 7. **Write the assistant log.**
 
-**Deliverables**
+**Deliverables and deadline**
 
 - [ ] Reproducible notebook — runs top to bottom from a clean kernel.
 - [ ] Report of **max. 8 pages**.
 - [ ] Assistant log (half a page).
-- [ ] Presentation of **15 minutes** + questions.
+- [ ] Presentation of **15 minutes** + questions, in class on **Friday 27 November**.
+
+**Due:** Thursday 26 November 2026, 23:59 · subject `Project 2 – Group name`.
 
 **Grading rubric**
 

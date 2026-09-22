@@ -77,10 +77,14 @@ nav:
   - Code Assistants: code-assistants.md
   - Classes:
       - classes/classes.md
-      - "Class 1 · Types of Data": notebooks/class1.ipynb
-      - "Class 2 · Data Manipulation": notebooks/class2.ipynb
-      - "Class 3 · What is Machine Learning?": notebooks/class3.ipynb
-      - "Class 4 · Classification": notebooks/class4.ipynb
-      - "Class 5 · Trees & Random Forests": notebooks/class5.ipynb
+      - "Session 1 · Data and Decision Making": classes/class1.md
+      - "Session 2 · Data Manipulation": classes/class2.md
+      - "Session 3 · What Is Machine Learning?": classes/class3.md
+      - "Session 4 · The ML Pipeline": classes/class4.md
+      - "Notebook · Types of Data": notebooks/class1.ipynb
+      - "Notebook · Data Manipulation": notebooks/class2.ipynb
+      - "Notebook · Machine Learning Models": notebooks/class3.ipynb
+      - "Notebook · Classification": notebooks/class4.ipynb
+      - "Notebook · Trees & Random Forests": notebooks/class5.ipynb
   - Projects: projects.md
   - Archive: archive.md

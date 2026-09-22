@@ -10,15 +10,16 @@ defend every line it writes.</p>
 </div>
 
 <div class="usm-facts" markdown>
-<div class="usm-fact"><span class="usm-fact-label">Format</span><span class="usm-fact-value">Hands-on sessions</span></div>
+<div class="usm-fact"><span class="usm-fact-label">Sessions</span><span class="usm-fact-value">Fridays 13:00–16:00</span></div>
 <div class="usm-fact"><span class="usm-fact-label">Language</span><span class="usm-fact-value">Python</span></div>
 <div class="usm-fact"><span class="usm-fact-label">Assessment</span><span class="usm-fact-value">2 projects</span></div>
 <div class="usm-fact"><span class="usm-fact-label">Project 1</span><span class="usm-fact-value">40%</span></div>
 <div class="usm-fact"><span class="usm-fact-label">Project 2</span><span class="usm-fact-value">60%</span></div>
-<div class="usm-fact"><span class="usm-fact-label">Sessions</span><span class="usm-fact-value">10</span></div>
+<div class="usm-fact"><span class="usm-fact-label">Term</span><span class="usm-fact-value">11 Sep – 27 Nov 2026</span></div>
 </div>
 
-> 🗓️ Session-by-session plan in [**Program**](program.md) · deliverables in [**Projects**](projects.md).
+> 🗓️ Session-by-session plan and dates in [**Classes**](classes/classes.md) · syllabus in
+> [**Program**](program.md) · deliverables in [**Projects**](projects.md).
 
 ## 📌 What this course is about
 

@@ -1,29 +1,50 @@
 # 📚 Classes
 
-Ten sessions, organised in five blocks. Each session pairs a **modelling topic** with the
-**assistant skill** you will practise in the same notebook.
+Eleven sessions of three hours each. Every session pairs a **modelling topic** with the
+**assistant skill** you practise in the same notebook.
 
-!!! note "Dates"
-    Session dates for this term will be published here once the timetable is confirmed. Homework
-    deadlines are announced in class and on this page.
+!!! info "Schedule"
+    **Fridays, 13:00 – 16:00**, from 11 September to 27 November 2026 (11 sessions).
+    There is no class on **Friday 18 September** (Fiestas Patrias).
 
 ## Session plan
 
-| # | Topic | Modelling focus | Assistant skill |
-|---:|---|---|---|
-| 1 | **Data and decision making** | Types of data; from a business question to a dataset | Setting up your assistant; asking for code that runs |
-| 2 | **Data manipulation** | Cleaning, joining, aggregating; tidy data | Delegating wrangling; spotting silent type coercion |
-| 3 | **What is machine learning?** | Fitting a model, KNN, polynomial regression, bias vs. variance | Asking for an explanation, not just code |
-| 4 | **The ML pipeline** | Train/test discipline, cross-validation, the cost function | Catching data leakage in generated pipelines |
-| 5 | **Classification I** | Logistic regression, confusion matrix, ROC/AUC | Choosing the right metric — and refusing the default |
-| 6 | **Classification II** | Naïve Bayes, text classification, sentiment analysis | Prompting for text preprocessing; reproducibility |
-| 7 | **Trees and ensembles** | Decision trees, bagging, random forests, boosting | Refactoring an assistant's script into functions |
-| 8 | **Selection and shrinkage** | Subset/stepwise selection, LASSO, Ridge, Elastic Net | Debugging with the assistant instead of guessing |
-| 9 | **Unlabeled data** | PCA, k-means, hierarchical clustering | Reviewing generated plots and their interpretation |
-| 10 | **Neural networks + closing** | Perceptron, ANN structure, training and optimization | Knowing when *not* to delegate |
+| # | Date | Topic | Modelling focus | Assistant skill |
+|---:|---|---|---|---|
+| [1](class1.md) | Fri 11 Sep ✅ | **Data and decision making** | Types of data; from a business question to a dataset | VS Code setup; the prompt-and-verify cycle |
+| — | Fri 18 Sep | 🇨🇱 *No class — Fiestas Patrias* | | |
+| [2](class2.md) | Fri 25 Sep | **Data manipulation** | Cleaning, joining, aggregating; tidy data | Delegating wrangling; catching silent coercion |
+| [3](class3.md) | Fri 2 Oct | **What is machine learning?** | Fitting, KNN, polynomial regression, bias vs. variance | Asking it to teach, not only to code |
+| [4](class4.md) | Fri 9 Oct | **The ML pipeline** 📊 *Project 1 released* | Pipelines, cross-validation, data leakage | Auditing a generated pipeline for leakage |
+| 5 | Fri 16 Oct | **Classification I** | Logistic regression, confusion matrix, ROC/AUC | Choosing the metric instead of accepting the default |
+| 6 | Fri 23 Oct | **Project 1 presentations** + **Classification II** | Naïve Bayes, text classification, sentiment | Defending your own code under questions |
+| 7 | Fri 30 Oct | **Trees and ensembles** 🎯 *Project 2 released* | Decision trees, bagging, random forests, boosting | Refactoring a script into functions |
+| 8 | Fri 6 Nov | **Selection and shrinkage** | Subset/stepwise selection, LASSO, Ridge, Elastic Net | Debugging with the assistant instead of guessing |
+| 9 | Fri 13 Nov | **Unlabeled data** | PCA, k-means, hierarchical clustering | Reviewing generated plots and their interpretation |
+| 10 | Fri 20 Nov | **Neural networks** + project clinic | Perceptron, ANN structure, training, optimization | Knowing when *not* to delegate |
+| 11 | Fri 27 Nov | **Project 2 final presentations** + closing | — | — |
 
-> 📊 **Project 1** is delivered after Session 5 · **Project 2** is presented in the final sessions.
-> See [Projects](../projects.md).
+### How a 3-hour session runs
+
+| Time | Block |
+|---|---|
+| 13:00 – 13:15 | Recap and questions on the previous session |
+| 13:15 – 14:15 | Concept block |
+| 14:15 – 14:30 | Break |
+| 14:30 – 15:20 | Hands-on lab, paired with your assistant |
+| 15:20 – 15:55 | Applied exercise or project work |
+| 15:55 – 16:00 | Wrap-up and homework |
+
+### Key dates
+
+| Milestone | Date |
+|---|---|
+| 📊 **Project 1** released | Friday 9 October |
+| 📥 **Project 1** due | Thursday 22 October, 23:59 |
+| 🎤 **Project 1** presentations | Friday 23 October, in class |
+| 🎯 **Project 2** released | Friday 30 October |
+| 📥 **Project 2** due | Thursday 26 November, 23:59 |
+| 🎤 **Project 2** presentations | Friday 27 November, in class |
 
 ## Notebooks
 
@@ -73,7 +94,7 @@ Decision trees, pruning and ensembles.
 
 </div>
 
-> 🚧 Notebooks for sessions 6 to 10 are published as the term progresses.
+> 🚧 Notebooks for sessions 6 to 11 are published as the term progresses.
 
 ## Homework
 
