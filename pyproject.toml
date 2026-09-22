@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "machine-learning-egei"
+version = "0.1.0"
+description = "Machine Learning with AI coding assistants — EGEI"
+authors = ["Sebastian Azocar <hizocar@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+mkdocs-material = "^8.2.15"
+mkdocs-jupyter = "^0.21.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

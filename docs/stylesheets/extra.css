@@ -1,0 +1,647 @@
+/* ==========================================================================
+   Paleta institucional UTFSM
+   Colores extraídos del escudo y timbre oficiales de la Universidad Técnica
+   Federico Santa María (Dirección General de Docencia).
+   ========================================================================== */
+:root,
+[data-md-color-scheme="default"] {
+  --usm-navy: #1b2a5e;
+  --usm-navy-dark: #10193b;
+  --usm-blue: #005f96;
+  --usm-gold: #e5b300;
+  --usm-red: #b30828;
+
+  --md-primary-fg-color: var(--usm-navy);
+  --md-primary-fg-color--light: var(--usm-blue);
+  --md-primary-fg-color--dark: var(--usm-navy-dark);
+  --md-accent-fg-color: var(--usm-gold);
+  --md-accent-fg-color--transparent: #e5b30022;
+  --md-typeset-a-color: var(--usm-blue);
+}
+
+[data-md-color-scheme="slate"] {
+  --usm-navy: #24356e;
+  --usm-navy-dark: #0c1330;
+  --usm-blue: #3d9bd6;
+  --usm-gold: #f2c334;
+  --usm-red: #e15268;
+
+  --md-primary-fg-color: var(--usm-navy-dark);
+  --md-primary-fg-color--light: var(--usm-navy);
+  --md-primary-fg-color--dark: #080d1f;
+  --md-accent-fg-color: var(--usm-gold);
+  --md-typeset-a-color: var(--usm-blue);
+  --md-default-bg-color: #10142a;
+}
+
+/* Header / topbar -------------------------------------------------------- */
+.md-header {
+  background: linear-gradient(90deg, var(--usm-navy-dark) 0%, var(--usm-navy) 55%, var(--usm-blue) 100%);
+  box-shadow: 0 1px 0 var(--usm-gold);
+}
+
+.md-tabs {
+  background-color: var(--usm-navy-dark);
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+/* Gold accent underline on active tabs/links */
+.md-tabs__link--active,
+.md-nav__link--active {
+  color: var(--usm-gold) !important;
+}
+
+.md-typeset a:hover {
+  color: var(--usm-gold);
+}
+
+/* Footer ------------------------------------------------------------------ */
+.md-footer {
+  background-color: var(--usm-navy-dark);
+}
+
+.md-footer-meta {
+  background-color: var(--usm-navy-dark);
+}
+
+/* Headings ----------------------------------------------------------------*/
+.md-typeset h1 {
+  color: var(--usm-navy);
+  border-bottom: 3px solid var(--usm-gold);
+  padding-bottom: 0.3rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: #eef1fb;
+}
+
+.md-typeset h2 {
+  border-left: 4px solid var(--usm-blue);
+  padding-left: 0.6rem;
+}
+
+/* Tables -------------------------------------------------------------------*/
+.md-typeset table:not([class]) th {
+  background-color: var(--usm-navy);
+  color: #ffffff;
+}
+
+.md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+/* Admonitions tuned to the palette ------------------------------------------*/
+.md-typeset .admonition.note,
+.md-typeset .note > .admonition-title {
+  border-color: var(--usm-blue);
+}
+.md-typeset .note > .admonition-title::before {
+  background-color: var(--usm-blue);
+}
+
+.md-typeset .admonition.warning,
+.md-typeset .warning > .admonition-title {
+  border-color: var(--usm-gold);
+}
+.md-typeset .warning > .admonition-title::before {
+  background-color: var(--usm-gold);
+}
+
+/* ==========================================================================
+   Hero banner (home page)
+   ========================================================================== */
+.usm-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  background: linear-gradient(120deg, var(--usm-navy-dark) 0%, var(--usm-navy) 60%, var(--usm-blue) 100%);
+  color: #f3f5fb;
+  border-radius: 12px;
+  padding: 2.2rem 2.4rem;
+  margin: 0.5rem 0 2rem 0;
+  border-bottom: 4px solid var(--usm-gold);
+}
+
+.usm-hero h1 {
+  color: #ffffff !important;
+  border-bottom: none !important;
+  margin: 0 0 0.4rem 0;
+  font-size: 1.9rem;
+}
+
+.usm-hero p {
+  margin: 0;
+  opacity: 0.92;
+  max-width: 46ch;
+}
+
+.usm-hero .usm-hero-tag {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  background: var(--usm-gold);
+  color: var(--usm-navy-dark);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.usm-hero img {
+  height: 110px;
+  width: auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+}
+
+/* Info strip / key facts ---------------------------------------------------*/
+.usm-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.usm-fact {
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-top: 3px solid var(--usm-blue);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  text-align: center;
+}
+
+.usm-fact .usm-fact-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.usm-fact .usm-fact-value {
+  display: block;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--usm-navy);
+}
+
+[data-md-color-scheme="slate"] .usm-fact .usm-fact-value {
+  color: #eef1fb;
+}
+
+/* Card grid (docente, unidades, etc.) ---------------------------------------*/
+.usm-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.usm-card {
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-radius: 10px;
+  padding: 1.2rem 1.3rem;
+  background: var(--md-default-bg-color);
+  border-top: 4px solid var(--usm-gold);
+}
+
+.usm-card h3 {
+  margin-top: 0;
+  color: var(--usm-navy);
+}
+
+[data-md-color-scheme="slate"] .usm-card h3 {
+  color: #eef1fb;
+}
+
+/* Class session header badge -------------------------------------------------*/
+.usm-session-meta {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 0.6rem 0 1.4rem 0;
+}
+
+.usm-session-meta span {
+  background: var(--usm-navy);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.usm-session-meta span.usm-tag-gold {
+  background: var(--usm-gold);
+  color: var(--usm-navy-dark);
+}
+
+.usm-session-meta span.usm-tag-red {
+  background: var(--usm-red);
+}
+
+/* Interactive chart containers ----------------------------------------------*/
+.usm-chart {
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem 0.6rem 1.4rem;
+  margin: 1.4rem 0;
+}
+
+.usm-chart-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.usm-chart-canvas-wrap canvas {
+  /* Chart.js sizes the canvas to this wrapper (responsive + maintainAspectRatio:false in
+     charts.js) — without a fixed-height wrapper, Chart.js and the CSS max-height fight over the
+     canvas size and it collapses over successive re-renders. */
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.usm-chart-caption {
+  display: block;
+  text-align: center;
+  font-size: 0.78rem;
+  opacity: 0.7;
+  margin: 0.4rem 0 0.9rem 0;
+  font-style: italic;
+}
+
+.usm-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+/* Concept Venn diagram (IA / ML / IA Generativa) ----------------------------*/
+.usm-venn {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 260px;
+  margin: 1.5rem auto;
+}
+
+.usm-venn div {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 14px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #ffffff;
+  cursor: help;
+  transition: transform 0.15s ease;
+}
+
+.usm-venn div:hover {
+  transform: scale(1.03);
+}
+
+.usm-venn .usm-venn-ia {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: color-mix(in srgb, var(--usm-blue) 35%, transparent);
+  border: 2px solid var(--usm-blue);
+  color: var(--usm-blue);
+}
+
+.usm-venn .usm-venn-ml {
+  width: 72%;
+  height: 72%;
+  left: 14%;
+  top: 20%;
+  background: color-mix(in srgb, var(--usm-navy) 45%, transparent);
+  border: 2px solid var(--usm-navy);
+  color: var(--usm-navy);
+}
+
+[data-md-color-scheme="slate"] .usm-venn .usm-venn-ml {
+  color: #d7dcf5;
+}
+
+.usm-venn .usm-venn-genia {
+  width: 42%;
+  height: 42%;
+  left: 29%;
+  top: 34%;
+  background: var(--usm-gold);
+  border: 2px solid var(--usm-gold);
+  color: var(--usm-navy-dark);
+  padding-top: 30%;
+}
+
+/* Deliverable / activity callouts --------------------------------------------*/
+.usm-activity {
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-left: 5px solid var(--usm-blue);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+  background: var(--md-default-bg-color);
+}
+
+.usm-activity h3 {
+  margin-top: 0;
+}
+
+.usm-deliverable {
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-left: 5px solid var(--usm-red);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+  background: var(--md-default-bg-color);
+}
+
+.usm-deliverable h3 {
+  margin-top: 0;
+  color: var(--usm-red);
+}
+
+.usm-deliverable-badge {
+  display: inline-block;
+  background: var(--usm-red);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+
+/* ==========================================================================
+   Perfil docente (Home)
+   ========================================================================== */
+.usm-profile {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 4px solid var(--usm-gold);
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-radius: 12px;
+  padding: 1.6rem 1.8rem;
+  margin: 1.2rem 0 1.6rem 0;
+  background: var(--md-default-bg-color);
+}
+
+.usm-profile img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--usm-gold);
+  flex-shrink: 0;
+}
+
+.usm-profile-body {
+  flex: 1;
+  min-width: 240px;
+}
+
+.usm-profile-body h3 {
+  margin: 0 0 0.15rem 0;
+  font-size: 1.35rem;
+  color: var(--usm-navy);
+}
+
+[data-md-color-scheme="slate"] .usm-profile-body h3 {
+  color: #eef1fb;
+}
+
+.usm-profile-role {
+  display: block;
+  font-weight: 600;
+  color: var(--usm-blue);
+  margin-bottom: 0.6rem;
+}
+
+.usm-profile-body p {
+  margin: 0 0 0.8rem 0;
+}
+
+.usm-profile-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--usm-navy);
+  color: #fff !important;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.usm-profile-links a:hover {
+  background: var(--usm-blue);
+}
+
+/* Timeline (experiencia / docencia) ------------------------------------------*/
+.usm-timeline {
+  list-style: none;
+  margin: 0.6rem 0 0 0;
+  padding: 0;
+  position: relative;
+}
+
+.usm-timeline li {
+  position: relative;
+  padding: 0 0 1.1rem 1.4rem;
+  border-left: 2px solid var(--md-accent-fg-color--transparent);
+}
+
+.usm-timeline li:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+
+.usm-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--usm-blue);
+  border: 2px solid var(--md-default-bg-color);
+}
+
+.usm-timeline li.usm-current::before {
+  background: var(--usm-gold);
+}
+
+.usm-timeline .usm-timeline-title {
+  display: block;
+  font-weight: 700;
+  color: var(--usm-navy);
+}
+
+[data-md-color-scheme="slate"] .usm-timeline .usm-timeline-title {
+  color: #eef1fb;
+}
+
+.usm-timeline .usm-timeline-meta {
+  display: block;
+  font-size: 0.82rem;
+  opacity: 0.75;
+}
+
+.usm-timeline .usm-timeline-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  background: var(--usm-gold);
+  color: var(--usm-navy-dark);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+}
+
+/* Call-to-action box (ej. registro de grupos) --------------------------------*/
+.usm-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-left: 5px solid var(--usm-gold);
+  border-radius: 8px;
+  padding: 1rem 1.3rem;
+  margin: 1.2rem 0;
+  background: var(--md-default-bg-color);
+}
+
+.usm-cta-text strong {
+  display: block;
+  color: var(--usm-navy);
+  font-size: 1rem;
+  margin-bottom: 0.15rem;
+}
+
+[data-md-color-scheme="slate"] .usm-cta-text strong {
+  color: #eef1fb;
+}
+
+.usm-cta-text span {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.usm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--usm-gold);
+  color: var(--usm-navy-dark) !important;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+
+.usm-btn:hover {
+  background: #f2c334;
+  transform: translateY(-1px);
+}
+
+/* Business Model Canvas (mini-visual) -----------------------------------------*/
+.usm-bmc {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "partners activities value relations segments"
+    "partners resources  value channels  segments"
+    "costs    costs       costs revenue  revenue";
+  gap: 6px;
+  margin: 1.5rem 0;
+  font-size: 0.8rem;
+}
+
+.usm-bmc-block {
+  border: 1px solid var(--md-accent-fg-color--transparent);
+  border-radius: 6px;
+  padding: 0.6rem 0.7rem;
+  background: var(--md-default-bg-color);
+  border-top: 3px solid var(--usm-blue);
+}
+
+.usm-bmc-block strong {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--usm-navy);
+  margin-bottom: 0.3rem;
+}
+
+[data-md-color-scheme="slate"] .usm-bmc-block strong {
+  color: #eef1fb;
+}
+
+.usm-bmc-block span {
+  display: block;
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+.usm-bmc-block.usm-bmc-value {
+  border-top-color: var(--usm-gold);
+  background: var(--md-accent-fg-color--transparent);
+}
+
+.usm-bmc-block.usm-bmc-cost,
+.usm-bmc-block.usm-bmc-revenue {
+  border-top-color: var(--usm-red);
+}
+
+.usm-bmc-partners { grid-area: partners; }
+.usm-bmc-activities { grid-area: activities; }
+.usm-bmc-resources { grid-area: resources; }
+.usm-bmc-value { grid-area: value; }
+.usm-bmc-relations { grid-area: relations; }
+.usm-bmc-channels { grid-area: channels; }
+.usm-bmc-segments { grid-area: segments; }
+.usm-bmc-cost { grid-area: costs; }
+.usm-bmc-revenue { grid-area: revenue; }
+
+@media (max-width: 640px) {
+  .usm-bmc {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "partners  activities"
+      "partners  resources"
+      "value     value"
+      "relations channels"
+      "segments  segments"
+      "costs     revenue";
+  }
+}
