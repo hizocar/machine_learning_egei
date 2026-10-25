@@ -1,8 +1,13 @@
-# 🤖 Working with a Code Assistant
+---
+hide:
+  - navigation
+---
+
+# Working with a Code Assistant
 
 <div class="usm-session-meta">
-<span>🧵 Transversal thread of the course</span>
-<span class="usm-tag-gold">Required in both projects</span>
+<span>Transversal thread of the course</span>
+<span class="usm-tag-gold">Required in every project delivery</span>
 </div>
 
 An AI coding assistant will write most of the syntax you need this term. That is fine — it is how
@@ -23,8 +28,8 @@ Any of these is acceptable. Free tiers are enough for everything we do.
 | **Cursor** | A full editor | Refactoring across several files | [cursor.com](https://cursor.com) |
 
 !!! tip "If you work in Google Colab"
-    Colab has an assistant built in, so you need no local setup at all. That is the lowest-friction
-    path for this course, and it is the one we will use in class.
+    Colab has an assistant built in, so you need no local setup at all. In class we work in VS Code
+    (set up in Session 1), but every session notebook also opens in Colab with one click.
 
 ## 2. Ask well: four things every prompt needs
 
@@ -102,14 +107,14 @@ Those are the parts you are being graded on.
 ## 5. Course policy
 
 !!! warning "Allowed, expected, and disclosed"
-    1. **Using an assistant is permitted and encouraged** in homework and in both projects.
+    1. **Using an assistant is permitted and encouraged** in homework and in the project.
     2. **You must be able to explain every line you submit.** Project presentations include questions
        about your own code. Code you cannot explain is treated as code you did not write.
-    3. **You must disclose** your use in the assistant log of each project (next section).
+    3. **You must disclose** your use in the assistant log of each delivery (next section).
     4. **Never paste confidential or personal data** into a public assistant. Use synthetic or public
        data in this course.
 
-### The assistant log (required in both projects)
+### The assistant log (required in both deliveries)
 
 Half a page, at the end of the report. One row per meaningful use:
 

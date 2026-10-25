@@ -9,6 +9,8 @@ markdown_extensions:
   - attr_list
   - admonition
   - pymdownx.details
+  - pymdownx.arithmatex:
+      generic: true
   - md_in_html
   - pymdownx.highlight:
       anchor_linenums: true
@@ -31,6 +33,7 @@ theme:
   features:
     - navigation.instant
     - navigation.top
+    - navigation.footer
     - navigation.tabs
     - content.code.annotate
     - content.code.copy
@@ -55,10 +58,20 @@ theme:
 # Extra CSS / JS
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/ml-widgets.css
+  - stylesheets/ml-widgets-s06.css
+  - stylesheets/ml-widgets-s07.css
+  - stylesheets/ml-widgets-s08.css
 
 extra_javascript:
-  - https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js
-  - javascripts/charts.js
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js
+  - javascripts/ml-widgets.js
+  - javascripts/ml-widgets-s06.js
+  - javascripts/ml-widgets-s07.js
+  - javascripts/ml-widgets-s08.js
+  - javascripts/course-now.js
 
 extra:
   social:
@@ -71,20 +84,27 @@ plugins:
       include_source: true
   - search
 
+# Notebooks are reached from their session page, not from the menu.
+not_in_nav: |
+  /notebooks/
+  /homeworks/
+  /archive.md
+
 nav:
   - Home: index.md
-  - Program: program.md
-  - Code Assistants: code-assistants.md
   - Classes:
-      - classes/classes.md
-      - "Session 1 · Data and Decision Making": classes/class1.md
-      - "Session 2 · Data Manipulation": classes/class2.md
-      - "Session 3 · What Is Machine Learning?": classes/class3.md
-      - "Session 4 · The ML Pipeline": classes/class4.md
-      - "Notebook · Types of Data": notebooks/class1.ipynb
-      - "Notebook · Data Manipulation": notebooks/class2.ipynb
-      - "Notebook · Machine Learning Models": notebooks/class3.ipynb
-      - "Notebook · Classification": notebooks/class4.ipynb
-      - "Notebook · Trees & Random Forests": notebooks/class5.ipynb
-  - Projects: projects.md
-  - Archive: archive.md
+      - "All sessions": classes/classes.md
+      - "S1 · 11 Sep · Data and Decision Making": classes/class1.md
+      - "S2 · 25 Sep · Data Manipulation": classes/class2.md
+      - "S3 · 2 & 9 Oct · What Is ML?": classes/class3.md
+      - "S4 · 23 Oct · The ML Pipeline": classes/class4.md
+      - "S5 · 30 Oct · Classification": classes/class5.md
+      - "S6 · 6 Nov · Trees and Ensembles": classes/class6.md
+      - "S7 · 13 Nov · Selection and Shrinkage": classes/class7.md
+      - "S8 · 20 Nov · Unlabeled Data": classes/class8.md
+      - "S9 · 27 Nov · Final Presentations": classes/class9.md
+  - Project: projects.md
+  - The Case: case.md
+  - Program: program.md
+  - Glossary: glossary.md
+  - Code Assistants: code-assistants.md

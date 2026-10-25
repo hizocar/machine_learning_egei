@@ -1,0 +1,151 @@
+/* Session 8 widget styles (extends ml-widgets.css): PCA and clustering. */
+.ml-widget {
+  --ml-k0: #005f96;
+  --ml-k1: #c28000;
+  --ml-k2: #b30828;
+  --ml-k3: #2e7d4f;
+  --ml-k4: #6a4c93;
+  --ml-k5: #5f6b7a;
+}
+
+[data-md-color-scheme="slate"] .ml-widget {
+  --ml-k0: #3d9bd6;
+  --ml-k1: #f2c334;
+  --ml-k2: #e15268;
+  --ml-k3: #5cc28a;
+  --ml-k4: #b39ddb;
+  --ml-k5: #a9b4c2;
+}
+
+.ml-s08-side-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+
+/* PCA arrows */
+.ml-s08-pc1 { stroke: var(--ml-c3); stroke-width: 3; stroke-linecap: round; }
+.ml-s08-pc2 { stroke: var(--ml-c2); stroke-width: 3; stroke-linecap: round; }
+.ml-plot .ml-s08-pclab { font-weight: 700; font-size: calc(12px * var(--ml-k, 1)); }
+.ml-plot .ml-s08-pclab.is-1 { fill: var(--ml-c3); }
+.ml-plot .ml-s08-pclab.is-2 { fill: var(--ml-c2); }
+
+/* k-means points, links and centroids, coloured by cluster k0…k5 */
+.ml-s08-pt { fill: var(--ml-muted); opacity: 0.55; transition: fill 0.3s ease; }
+.ml-s08-pt.k0 { fill: var(--ml-k0); opacity: 0.75; }
+.ml-s08-pt.k1 { fill: var(--ml-k1); opacity: 0.75; }
+.ml-s08-pt.k2 { fill: var(--ml-k2); opacity: 0.75; }
+.ml-s08-pt.k3 { fill: var(--ml-k3); opacity: 0.75; }
+.ml-s08-pt.k4 { fill: var(--ml-k4); opacity: 0.75; }
+.ml-s08-pt.k5 { fill: var(--ml-k5); opacity: 0.75; }
+.ml-s08-link { stroke-width: 0.7; }
+.ml-s08-link.k0 { stroke: var(--ml-k0); }
+.ml-s08-link.k1 { stroke: var(--ml-k1); }
+.ml-s08-link.k2 { stroke: var(--ml-k2); }
+.ml-s08-link.k3 { stroke: var(--ml-k3); }
+.ml-s08-link.k4 { stroke: var(--ml-k4); }
+.ml-s08-link.k5 { stroke: var(--ml-k5); }
+.ml-s08-cent-ring { fill: var(--md-default-bg-color); stroke-width: 3; }
+.ml-s08-cent-cross { stroke: var(--ml-ink); stroke-width: 2; stroke-linecap: round; }
+.ml-s08-cent.k0 .ml-s08-cent-ring { stroke: var(--ml-k0); }
+.ml-s08-cent.k1 .ml-s08-cent-ring { stroke: var(--ml-k1); }
+.ml-s08-cent.k2 .ml-s08-cent-ring { stroke: var(--ml-k2); }
+.ml-s08-cent.k3 .ml-s08-cent-ring { stroke: var(--ml-k3); }
+.ml-s08-cent.k4 .ml-s08-cent-ring { stroke: var(--ml-k4); }
+.ml-s08-cent.k5 .ml-s08-cent-ring { stroke: var(--ml-k5); }
+
+/* Elbow and silhouette mini charts */
+.ml-s08-curves {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.6rem 1.2rem;
+  margin-bottom: 0.4rem;
+}
+.ml-s08-kdot { fill: var(--ml-c1); stroke: var(--md-default-bg-color); stroke-width: 1.5; cursor: pointer; }
+.ml-s08-kdot.is-off { fill: var(--ml-muted); cursor: default; }
+.ml-s08-kdot:focus-visible { outline: none; stroke: var(--ml-ink); stroke-width: 2.5; }
+.ml-s08-kring { fill: none; stroke: var(--usm-gold); stroke-width: 3; pointer-events: none; }
+
+/* Cluster profile table */
+.ml-s08-table-wrap { overflow-x: auto; margin: 0.2rem 0 0.4rem; }
+.md-typeset .ml-s08-table {
+  display: table;
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+  margin: 0;
+  border: none;
+}
+.md-typeset .ml-s08-table th,
+.md-typeset .ml-s08-table td {
+  padding: 0.3rem 0.45rem;
+  border: none;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  vertical-align: middle;
+  background: transparent;
+}
+.md-typeset .ml-s08-table thead th {
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.25;
+  vertical-align: bottom;
+  background: transparent;
+  color: var(--md-default-fg-color);
+}
+.md-typeset .ml-s08-table thead th small {
+  display: block;
+  font-weight: 400;
+  color: var(--ml-muted);
+  font-size: 0.64rem;
+}
+.md-typeset .ml-s08-table tbody th { font-weight: 600; white-space: nowrap; text-align: left; }
+.ml-s08-swatch {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+  vertical-align: -0.05rem;
+  background: currentColor;
+}
+.ml-s08-table th.k0 .ml-s08-swatch { color: var(--ml-k0); }
+.ml-s08-table th.k1 .ml-s08-swatch { color: var(--ml-k1); }
+.ml-s08-table th.k2 .ml-s08-swatch { color: var(--ml-k2); }
+.ml-s08-table th.k3 .ml-s08-swatch { color: var(--ml-k3); }
+.ml-s08-table th.k4 .ml-s08-swatch { color: var(--ml-k4); }
+.ml-s08-table th.k5 .ml-s08-swatch { color: var(--ml-k5); }
+.ml-s08-cellbar {
+  position: relative;
+  display: block;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: var(--ml-soft);
+  margin-bottom: 0.15rem;
+}
+.ml-s08-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; }
+.ml-s08-fill.k0 { background: var(--ml-k0); }
+.ml-s08-fill.k1 { background: var(--ml-k1); }
+.ml-s08-fill.k2 { background: var(--ml-k2); }
+.ml-s08-fill.k3 { background: var(--ml-k3); }
+.ml-s08-fill.k4 { background: var(--ml-k4); }
+.ml-s08-fill.k5 { background: var(--ml-k5); }
+.ml-s08-fill.is-poor { background: var(--ml-c3); }
+.ml-s08-avg {
+  position: absolute;
+  top: -0.2rem;
+  bottom: -0.2rem;
+  width: 0;
+  border-left: 2px dashed var(--ml-ink);
+}
+.ml-s08-val { font-variant-numeric: tabular-nums; }
+.md-typeset .ml-s08-table tr.ml-s08-poverty th,
+.md-typeset .ml-s08-table tr.ml-s08-poverty td {
+  border-top: 2px solid var(--ml-c3);
+  font-weight: 700;
+}
+.ml-s08-poverty .ml-s08-val { color: var(--ml-c3); }
+
+.ml-s08-swipe { display: none; font-size: 0.68rem; color: var(--ml-muted); margin: 0 0 0.2rem; }
+@media (max-width: 600px) { .ml-s08-swipe { display: block; } }
+.ml-s08-khit { cursor: pointer; }

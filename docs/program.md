@@ -1,14 +1,19 @@
-# 📋 Program — Machine Learning with Business Applications
+---
+hide:
+  - navigation
+---
+
+# Program
 
 <div class="usm-session-meta">
-<span>🎓 5 ECTS</span>
-<span>📍 Universidad Técnica Federico Santa María</span>
+<span>5 ECTS</span>
+<span>Universidad Técnica Federico Santa María</span>
 <span class="usm-tag-gold">Compulsory · GEME track</span>
 </div>
 
 ## 1. Course identification
 
-| | |
+| Item | Detail |
 |---|---|
 | **Course title** | Machine Learning — Business Applications |
 | **Programme** | EGEI · Track GEME (Globalisation and Emerging Market Economies) |
@@ -17,8 +22,9 @@
 | **Lecturer** | Sebastián Azócar M., MSc in Data Science |
 | **Contact** | [hizocar@gmail.com](mailto:hizocar@gmail.com) |
 | **Language** | English |
-| **Schedule** | **Fridays, 13:00 – 16:00** · 11 September – 27 November 2026 (11 sessions) |
+| **Schedule** | **Fridays, 13:00 – 16:00** · 11 September – 27 November 2026 (10 meetings) |
 | **Tools** | Python · scikit-learn · an AI coding assistant of your choice |
+| **Course case** | [Targeting poor households with CASEN 2022](case.md) |
 
 ## 2. Course description
 
@@ -63,20 +69,22 @@ the classroom is assumed. All assessed work is project-based.
 
 ### Calendar
 
+Every session works on the same case, [predicting household poverty with CASEN 2022](case.md), and
+introduces each method once, before it is used.
+
 | # | Date | Session |
 |---:|---|---|
-| 1 | Fri 11 Sep ✅ | Data and decision making · VS Code and assistant setup |
+| 1 | Fri 11 Sep ✅ | Data and decision making · Python and assistant setup |
 | — | Fri 18 Sep | 🇨🇱 *No class — Fiestas Patrias* |
-| 2 | Fri 25 Sep | Data manipulation with pandas |
-| 3 | Fri 2 Oct | What is machine learning? Fitting, KNN, bias–variance |
-| 4 | Fri 9 Oct | The ML pipeline: cross-validation and data leakage · **Project 1 released** |
-| 5 | Fri 16 Oct | Classification I: logistic regression, confusion matrix, ROC |
-| 6 | Fri 23 Oct | **Project 1 presentations** · Classification II: naïve Bayes and text |
-| 7 | Fri 30 Oct | Trees and ensembles · **Project 2 released** |
-| 8 | Fri 6 Nov | Variable selection and shrinkage: LASSO, Ridge, Elastic Net |
-| 9 | Fri 13 Nov | Unlabeled data: PCA and clustering |
-| 10 | Fri 20 Nov | Introduction to neural networks · project clinic |
-| 11 | Fri 27 Nov | **Project 2 final presentations** and course closing |
+| 2 | Fri 25 Sep ✅ | Data manipulation with pandas |
+| 3 | Fri 2 & 9 Oct ✅ | What is machine learning? Fitting, KNN, bias–variance |
+| — | Fri 16 Oct | *No class* |
+| 4 | Fri 23 Oct ✅ | The ML pipeline: scaling, cross-validation and data leakage |
+| 5 | Fri 30 Oct | Classification: logistic regression, confusion matrix, threshold, ROC · **Project released** |
+| 6 | Fri 6 Nov | Trees and ensembles |
+| 7 | Fri 13 Nov | Variable selection and shrinkage: LASSO, Ridge, Elastic Net · *Checkpoint 1 due Thu 12 Nov* |
+| 8 | Fri 20 Nov | Unlabeled data: PCA and clustering · project clinic |
+| 9 | Fri 27 Nov | **Final presentations** and course closing |
 
 > 🗓️ The detailed plan for each session, with objectives, labs and notebooks, is on the
 > [Classes](classes/classes.md) page.
@@ -89,13 +97,13 @@ the classroom is assumed. All assessed work is project-based.
 ### B. What is machine learning?
 - **B.1 ML models:** what a model is · fitting a model · KNN · polynomial regression ·
   overfitting and underfitting (bias vs. variance) · the cost function · training and test error
-- **B.2 The ML pipeline:** the bias–variance trade-off · cross-validation · applying the pipeline
+- **B.2 The ML pipeline:** scaling · pipelines · cross-validation · data leakage
 
 ### C. Classification
-- **C.1 Logistic regression:** what classification is · technique and methodology · measuring model
-  performance · the ROC curve
-- **C.2 Generative models:** the naïve Bayes classifier · text classification · NLP application:
-  measuring text sentiment
+- **C.1 Logistic regression:** what classification is · the logit as a predictor · categorical
+  variables and missing values in the pipeline
+- **C.2 Measuring performance:** confusion matrix · precision and recall · the decision threshold
+  and the cost of errors · the ROC curve and AUC
 
 ### D. Trees and forests
 - **D.1 Tree-based methods:** structure of decision trees · loss functions · pruning · regression
@@ -110,38 +118,40 @@ the classroom is assumed. All assessed work is project-based.
 - **F.1 Dimension reduction:** principal components and their application
 - **F.2 Clustering:** k-means · hierarchical clustering · advantages and limitations
 
-### G. Introduction to neural networks
-- **G.1 Foundations:** the simple perceptron · structure of an ANN · methods
-- **G.2 Implementation:** training the model · advantages, limitations and optimization
-
-### H. Working with AI coding assistants *(transversal)*
+### G. Working with AI coding assistants *(transversal)*
 - Prompting for code that is specific enough to be useful · reading and reviewing generated code ·
   testing before trusting · typical failure modes in data work (leakage, silent type coercion,
   fabricated APIs, wrong metric) · reproducibility · disclosure and academic honesty
 
 > 📖 The full guide for this thread is on the [Code Assistants](code-assistants.md) page.
 
+### Beyond this course
+
+Two topics from previous editions do not fit in this term's calendar: **naïve Bayes and text
+classification**, and **neural networks**. ISLR chapters 4.4 and 10 cover both, at the same level
+as the course.
+
 ## 6. Assessment
 
-All of the final grade comes from **two projects**. There are no written exams and no separate
-in-class activities.
+All of the final grade comes from **one project, delivered in two parts**. There are no written
+exams and no separate in-class activities.
 
-| Assessment | Weight | Covers | Due | Presented |
+| Assessment | Weight | Covers | Due | Format |
 |---|---:|---|---|---|
-| **Project 1** — supervised learning on a business problem | **40%** | Contents A, B, C | Thu 22 Oct, 23:59 | Fri 23 Oct |
-| **Project 2** — end-to-end ML case, student-chosen data | **60%** | All contents, D–G included | Thu 26 Nov, 23:59 | Fri 27 Nov |
+| **Checkpoint 1**: framing, data, honest first model | **40%** | Contents A, B, C | Thu 12 Nov, 23:59 | Notebook + 3-page memo |
+| **Final delivery**: comparison, recommendation, defence | **60%** | All contents | Thu 26 Nov, 23:59 | Notebook + 8-page report + presentation on Fri 27 Nov |
 | **Total** | **100%** | | | |
 
-Each project is delivered as a **reproducible notebook + short report + live presentation**, and
-includes a mandatory **assistant log**: which tool you used, for what, and what you had to correct.
-Full instructions, deadlines and the grading rubric are on the [Projects](projects.md) page.
+Both deliveries include a mandatory **assistant log**: which tool you used, for what, and what you
+had to correct. Full instructions, deadlines and the grading rubric are on the
+[Project](projects.md) page.
 
 ```text
-Final grade = 0.40 × Project 1 + 0.60 × Project 2
+Final grade = 0.40 × Checkpoint 1 + 0.60 × Final delivery
 ```
 
 !!! warning "Assistant use: allowed, expected, and disclosed"
-    Using an AI coding assistant is **permitted and encouraged** in both projects. Two rules apply:
+    Using an AI coding assistant is **permitted and encouraged** in the project. Two rules apply:
     (1) **you must be able to explain every line you submit** — presentations include questions
     about your own code; (2) **you must disclose** what you delegated in the assistant log. Code you
     cannot explain is treated as code you did not write.
@@ -152,6 +162,10 @@ Final grade = 0.40 × Project 1 + 0.60 × Project 2
 1. [Breiman, L. (2001). *Statistical Modeling: The Two Cultures.* Statistical Science, 16(3), 199-231.](http://users.csc.calpoly.edu/~dsun09/data401/readings/Breiman-Two-Cultures.pdf)
 2. [Zhang (2018). *Data Types From A Machine Learning Perspective With Examples.*](https://towardsdatascience.com/data-types-from-a-machine-learning-perspective-with-examples-111ac679e8bc)
 3. [Burgess, M. (2018). *This is how Netflix's secret recommendation system works.* Wired.](https://www.wired.co.uk/article/netflix-data-personalisation-watching)
+
+### The course case
+- [Ministerio de Desarrollo Social y Familia. *Encuesta CASEN 2022.*](https://observatorio.ministeriodesarrollosocial.gob.cl/) The source of the course data. See [The Case](case.md).
+- [Grosh, M. & Baker, J. (1995). *Proxy Means Tests for Targeting Social Programs: Simulations and Speculation.* World Bank LSMS Working Paper 118.](https://documents.worldbank.org/en/publication/documents-reports/documentdetail/750401468776352539) Why predicting welfare from observables is a policy tool.
 
 ### Models, pipeline and evaluation
 4. [Agarwal, A. (2018). *Polynomial Regression.*](https://towardsdatascience.com/polynomial-regression-bbe8b9d97491)
@@ -177,3 +191,5 @@ Final grade = 0.40 × Project 1 + 0.60 × Project 2
 
 > 📌 *ISLR* = James, Witten, Hastie & Tibshirani, *An Introduction to Statistical Learning*, freely
 > available at [statlearning.com](https://www.statlearning.com).
+
+Material and student projects from previous editions are in the [Archive](archive.md).

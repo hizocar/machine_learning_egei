@@ -1,17 +1,26 @@
-# Class 2 · Data Manipulation with pandas
+# Session 2 · Data Manipulation with pandas
 
 <div class="usm-session-meta">
-<span>📅 Friday 25 September 2026</span>
-<span>⏱️ 13:00 – 16:00</span>
-<span class="usm-tag-gold">Block A · Data</span>
-<span class="usm-tag-red">🤖 Assistant skill: delegating wrangling</span>
+<span>Friday 25 September 2026</span>
+<span>13:00 – 16:00</span>
+<a class="usm-tag-gold" href="../../program/#5-course-contents" title="Block A of the course contents in the Program">Syllabus block A · Data</a>
+<span class="usm-tag-skill">Assistant skill: delegating wrangling</span>
+</div>
+
+<div class="usm-actions usm-session-actions">
+<a class="usm-primary" href="../../notebooks/s02_data_manipulation/">Notebook</a>
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s02_data_manipulation.ipynb" target="_blank" rel="noopener">Open in Colab</a>
 </div>
 
 !!! note "Next session"
     This is the session after the Fiestas Patrias break (no class on Friday 18 September). Bring
-    your laptop with the environment from [Class 1](class1.md) working.
+    your laptop with the environment from [Session 1](class1.md) working.
 
-## 🎯 Objectives
+## ❓ Today's question
+
+> How do we turn raw survey records into one clean row per household?
+
+## Objectives
 
 - Load, inspect, clean, filter, join and aggregate data with `pandas`.
 - Reshape a raw table into the tidy form a model expects: one row per observation, one column per variable.
@@ -22,7 +31,7 @@
 
 | Time | Block |
 |---|---|
-| 13:00 – 13:15 | Recap of Class 1 and homework questions |
+| 13:00 – 13:15 | Recap of Session 1 and homework questions |
 | 13:15 – 14:15 | Core pandas: selection, filtering, `groupby`, joins, missing values |
 | 14:15 – 14:30 | Break |
 | 14:30 – 15:20 | **Lab:** wrangling a messy dataset with the assistant, verifying each step |
@@ -60,7 +69,7 @@ really "the table is not tidy" problems.
 
 ## 🧪 Lab: wrangling with the assistant
 
-Work in pairs on the Class 2 notebook. For each step:
+Work in pairs on the Session 2 notebook. For each step:
 
 1. **Ask precisely.** Name the dataframe, the columns, the operation and the expected output.
 2. **Read the generated code** before running it. If a line is unclear, ask for an explanation rather than running it blind.
@@ -81,18 +90,18 @@ Work in pairs on the Class 2 notebook. For each step:
     The last sentence is not decoration: it is what turns the assistant's output into something you
     can verify.
 
-## 📓 Notebook
+## Notebook
 
-[📓 Class 2 — Data Manipulation](../notebooks/class2.ipynb) ·
-[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/class2.ipynb)
+[📓 Session 2 — Data Manipulation](../notebooks/s02_data_manipulation.ipynb) ·
+[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s02_data_manipulation.ipynb)
 
 ## ✍️ Homework
 
 - [ ] [Lab 1 — Data manipulation](../homeworks/lab1.ipynb)
       ([Colab](https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/homeworks/lab1.ipynb)).
-- [ ] Keep a short log of your assistant use while solving it — you will need the same format in Project 1.
+- [ ] Keep a short log of your assistant use while solving it — you will need the same format in the project.
 
 ## 📚 Next session
 
-[Class 3](class3.md) (Friday 2 October) answers the question the whole course is built on:
+[Session 3](class3.md) (Friday 2 October) answers the question the whole course is built on:
 **what is a machine learning model, and how do we know when it has learned something real?**

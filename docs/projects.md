@@ -1,140 +1,129 @@
+---
+hide:
+  - navigation
+---
+
 <div class="usm-hero" markdown>
 <div>
-<span class="usm-hero-tag">100% of the final grade</span>
-<h1>🎯 Projects</h1>
-<p>Two end-to-end projects on real data. You deliver a reproducible notebook, a short report and a
-live presentation — plus the log of what you delegated to your code assistant and what you had to
-correct.</p>
+<h1>The Project</h1>
+<p>One project, built over the second half of the course, in two deliveries, and 100% of the final grade. You do to a problem
+of your choice what we do in class to the CASEN case: frame it, build an honest pipeline, compare
+models and turn the result into a decision someone can act on. Each delivery includes the log of
+what you delegated to your assistant and what you had to correct.</p>
 </div>
 </div>
 
 ## Overview
 
-| | Project 1 | Project 2 |
+| | Checkpoint 1 | Final delivery |
 |---|---|---|
 | **Weight** | **40%** | **60%** |
-| **Scope** | Supervised learning on a given business problem | End-to-end ML case on data you choose |
-| **Covers** | Contents A, B, C | All contents, including D–G |
-| **Team** | Groups of 2–3 | Same groups |
-| **Delivery** | Notebook + report + presentation | Notebook + report + presentation |
-| **Released** | Friday 9 October (Session 4) | Friday 30 October (Session 7) |
-| **Due** | Thursday 22 October, 23:59 | Thursday 26 November, 23:59 |
-| **Presented** | Friday 23 October, in class | Friday 27 November, in class |
+| **Covers** | Sessions 1–5: framing, data, pipeline, a baseline and a linear/logistic model | Everything, including trees, shrinkage or unsupervised methods |
+| **Deliver** | Notebook + memo (max. 3 pages) + assistant log | Notebook + report (max. 8 pages) + assistant log + presentation |
+| **Due** | Thursday 12 November, 23:59 | Thursday 26 November, 23:59 |
+| **Feedback / presented** | Written feedback, discussed in class on Friday 20 November | Presented on Friday 27 November (12 min + questions) |
+| **Team** | Groups of 2–3, released on Friday 30 October (Session 5) | Same groups |
 
 ```text
-Final grade = 0.40 × Project 1 + 0.60 × Project 2
+Final grade = 0.40 × Checkpoint 1 + 0.60 × Final delivery
 ```
 
 <div class="usm-cta" markdown>
 <div class="usm-cta-text">
 <strong>📧 How to submit</strong>
-<span>Share the notebook (Colab link with view access, or the <code>.ipynb</code> file) and the report by email to <strong>hizocar@gmail.com</strong>, with the subject <code>Project X – Group name</code>, before 23:59 on the due date.</span>
+<span>Share the notebook (Colab link with view access, or the <code>.ipynb</code> file) and the document by email to <strong>hizocar@gmail.com</strong>, with the subject <code>Project – Checkpoint 1 – Group name</code> or <code>Project – Final – Group name</code>, before 23:59 on the due date.</span>
 </div>
 [✉️ hizocar@gmail.com](mailto:hizocar@gmail.com){.usm-btn}
 </div>
 
+## Choosing the problem
+
+Your question must name **who decides what** with your prediction: a ministry that targets a
+subsidy, a bank that approves a loan, a firm that tries to keep a customer. Two routes:
+
+- **Your own dataset.** Public data is fine (Kaggle, UCI, the World Bank, open government data, the
+  Banco Central de Chile…), but the question must be yours. At least ~1,000 rows and a clear target.
+- **CASEN, with another target.** The [course data](case.md) has more questions in it than poverty:
+  labour informality, public vs. private health insurance, overcrowding. Poverty and income are
+  **not** allowed as targets, since we solve those in class.
+
+Either way, write down early which variables you would really have **at prediction time**. Most
+project disasters start there.
+
 ---
 
-## 📍 Project 1 — Prediction on a business problem
+## Checkpoint 1: an honest first model
 
 <div class="usm-deliverable" markdown>
-<span class="usm-deliverable-badge">Project 1 · 40% of the final grade</span>
+<span class="usm-deliverable-badge">Checkpoint 1 · 40% of the final grade</span>
 
-**Goal:** take a business question, turn it into a supervised learning problem, and answer it with a
-model you can defend — including how you evaluated it and what it would mean to act on it.
+**Goal:** a framed problem, a clean dataset and a first model whose error you can defend.
 
 **Instructions**
 
-1. **Frame the problem.** State the business question, the target variable, and what decision would
-   change because of the prediction.
-2. **Prepare the data.** Load, clean and explore the dataset. Document every choice that removes or
-   transforms rows.
-3. **Build a baseline first.** A trivial model (majority class, or the mean) — every later result is
-   measured against it.
-4. **Fit at least two models** seen in Sessions 3–5, with a proper train/test split and
-   cross-validation.
-5. **Evaluate with the right metric** for the business problem, and justify why it is the right one.
-   Include a confusion matrix if it is a classification task.
-6. **Interpret.** Which variables drive the prediction, and does that make business sense?
-7. **Write the assistant log** (see [Code Assistants](code-assistants.md#the-assistant-log-required-in-both-projects)).
-
-**Deliverables and deadline**
-
-- [ ] Reproducible notebook — runs top to bottom from a clean kernel.
-- [ ] Report of **max. 4 pages**: problem, data, method, results, limitations.
-- [ ] Assistant log (half a page).
-- [ ] Presentation of **10 minutes** + questions, in class on **Friday 23 October**.
-
-**Due:** Thursday 22 October 2026, 23:59 · subject `Project 1 – Group name`.
+1. **Frame the problem.** The question, the target, the decision that changes, and the cost of each
+   kind of mistake.
+2. **Prepare the data.** One row per unit of analysis. Document every row you drop and every
+   variable you transform, and what *missing* means for each column with missing values.
+3. **Split first; baseline next.** A trivial model (the mean, or the majority class) that every
+   later result is measured against.
+4. **Build a pipeline.** Preprocessing inside a `Pipeline`, with linear or logistic regression and
+   at least one KNN model, chosen by cross-validation.
+5. **Evaluate with the right metric.** For classification, a confusion matrix and a threshold you
+   justify with the costs from step 1.
+6. **Leakage check.** One paragraph: which features did you remove or keep, and why each one would
+   be available at prediction time.
+7. **Assistant log** (see [Code Assistants](code-assistants.md#the-assistant-log-required-in-both-deliveries)).
 
 **Grading rubric**
 
 | Criterion | Weight |
 |---|---:|
-| Problem framing: the question, the target and the decision are clear | 20% |
-| Data preparation and exploration, with documented choices | 20% |
-| Modelling: correct train/test discipline, sensible model choice, baseline | 25% |
-| Evaluation: right metric, honest reading of the results | 20% |
-| Communication: report, presentation, and answers about your own code | 15% |
+| Framing: the question, the target, the decision and the cost of each mistake | 20% |
+| Data preparation, with documented choices (including missing values) | 20% |
+| Pipeline and validation: split, baseline, CV, no leakage | 30% |
+| Metric and threshold, read honestly | 20% |
+| Clarity of the memo and the assistant log | 10% |
 
 </div>
 
 ---
 
-## 📍 Project 2 — End-to-end machine learning case
+## Final delivery: compare, decide, defend
 
 <div class="usm-deliverable" markdown>
-<span class="usm-deliverable-badge">Project 2 · 60% of the final grade</span>
+<span class="usm-deliverable-badge">Final delivery · 60% of the final grade</span>
 
-**Goal:** run a complete ML project on a dataset of your choice, from the business question to a
-recommendation, using the full toolbox of the course.
+**Goal:** take the Checkpoint 1 project to a recommendation, using the full toolbox of the course
+and the feedback you received.
 
 **Instructions**
 
-1. **Choose the case and the data.** Public datasets are fine (Kaggle, UCI, open government data);
-   the business question must be your own. Propose it in class before you start.
-2. **Explore and prepare** the data, including the treatment of missing values and categorical
-   variables.
-3. **Apply at least three families of methods** from the course — for example a linear or logistic
-   model, a tree-based ensemble, and either shrinkage (LASSO/Ridge/Elastic Net) or an unsupervised
-   step (PCA/clustering).
-4. **Compare them honestly** with cross-validation, and explain the trade-offs — not only which one
-   scored highest, but which one you would deploy and why.
-5. **Interpret and recommend.** What should the business do differently because of this model?
+1. **Respond to the feedback** on Checkpoint 1: what you changed, and why.
+2. **Apply at least three families of methods**: your Checkpoint 1 model, a tree-based ensemble
+   (Session 6), and either shrinkage (Session 7) or an unsupervised step (Session 8).
+3. **Compare them honestly** with cross-validation on the same splits, and explain the trade-offs:
+   not only which one scored highest, but which one you would deploy and why.
+4. **Interpret and recommend.** What should the decision-maker do differently because of this model?
    Quantify the expected effect, with explicit assumptions.
-6. **State the limitations**, including what would break in production and what data you would need
-   next.
-7. **Write the assistant log.**
-
-**Deliverables and deadline**
-
-- [ ] Reproducible notebook — runs top to bottom from a clean kernel.
-- [ ] Report of **max. 8 pages**.
-- [ ] Assistant log (half a page).
-- [ ] Presentation of **15 minutes** + questions, in class on **Friday 27 November**.
-
-**Due:** Thursday 26 November 2026, 23:59 · subject `Project 2 – Group name`.
+5. **State the limitations,** including what would break in production and what data you would
+   need next.
+6. **Assistant log.**
 
 **Grading rubric**
 
 | Criterion | Weight |
 |---|---:|
-| Relevance and framing of the chosen case | 15% |
-| Data preparation and exploratory analysis | 15% |
+| Response to feedback and quality of the final pipeline | 15% |
 | Breadth and correctness of the methods applied | 25% |
-| Honest comparison and model selection | 20% |
-| Business recommendation, quantified and with limitations | 15% |
-| Communication and defence of your own code | 10% |
+| Honest comparison and model choice | 20% |
+| Recommendation, quantified and with limitations | 20% |
+| Presentation and defence of your own code | 20% |
 
 </div>
 
 ---
-
-## Reference
-
-The [Final Project notebook](homeworks/Final%20Project.ipynb) from previous years is available as a
-structural reference for the expected level of depth.
 
 !!! warning "A model you cannot explain is not a finished project"
-    Both presentations include questions about your own code and about the choices behind it. This
-    is the core of the assessment: the assistant can write the pipeline, but only you can justify it.
+    The final presentation includes questions about your own code and the choices behind it. The
+    assistant can write the pipeline, but only you can justify it.

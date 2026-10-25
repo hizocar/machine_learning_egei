@@ -1,4 +1,9 @@
-# 🗄️ Archive
+---
+hide:
+  - navigation
+---
+
+# Archive
 
 Material and student work from previous editions of the course, kept for reference.
 
@@ -13,5 +18,5 @@ Material and student work from previous editions of the course, kept for referen
 | Final project — Stroke prediction | [PDF](archive-2023/Stroke_prediction.pdf) |
 
 > 📌 These are the deliverables of past cohorts. They are a good reference for the expected depth —
-> but note that the assessment structure changed this year: the grade is now **two projects**
-> (40% / 60%), and every delivery includes an [assistant log](code-assistants.md).
+> but note that the assessment structure changed this year: the grade is now **one project in two
+> deliveries** (40% / 60%), and every delivery includes an [assistant log](code-assistants.md).
