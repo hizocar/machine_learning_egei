@@ -1,0 +1,2066 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Machine Learning with AI coding assistants — EGEI">
+      
+      
+        <meta name="author" content="Sebastian Azocar">
+      
+      
+        <link rel="canonical" href="https://hizocar.github.io/machine_learning_egei/classes/class8/">
+      
+      
+        <link rel="prev" href="../class7/">
+      
+      
+        <link rel="next" href="../class9/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/usm_favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>S8 · 20 Nov · Unlabeled Data - Machine Learning — EGEI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s06.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s07.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s08.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#session-8-unlabeled-data-what-types-of-households-are-there" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Machine Learning — EGEI" class="md-header__button md-logo" aria-label="Machine Learning — EGEI" data-md-component="logo">
+      
+  <img src="../../images/usm_shield.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Machine Learning — EGEI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              S8 · 20 Nov · Unlabeled Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../classes/" class="md-tabs__link">
+          
+  
+  
+  Classes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../projects/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../case/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  The Case
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../program/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Program
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../code-assistants/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Code Assistants
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Machine Learning — EGEI" class="md-nav__button md-logo" aria-label="Machine Learning — EGEI" data-md-component="logo">
+      
+  <img src="../../images/usm_shield.png" alt="logo">
+
+    </a>
+    Machine Learning — EGEI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Classes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S1 · 11 Sep · Data and Decision Making
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S2 · 25 Sep · Data Manipulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S3 · 2 & 9 Oct · What Is ML?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S4 · 23 Oct · The ML Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S5 · 30 Oct · Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S6 · 6 Nov · Trees and Ensembles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S7 · 13 Nov · Selection and Shrinkage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S8 · 20 Nov · Unlabeled Data
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S8 · 20 Nov · Unlabeled Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#todays-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Today's question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-already-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔁 What you already know
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✨ New today
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda-3-hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗓️ Agenda (3 hours)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-no-target-only-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. No target, only features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pca-the-direction-of-most-spread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PCA: the direction of most spread
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-k-means-assign-update-repeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. k-means: assign, update, repeat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-local-minima-why-n_init-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Local minima: why n_init matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-choosing-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Choosing k
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-profile-first-then-look-at-poverty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Profile first, then look at poverty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-hierarchical-clustering-a-second-opinion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Hierarchical clustering: a second opinion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check your understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-session-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✍️ Before Session 9
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Next session
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S9 · 27 Nov · Final Presentations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Program
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Assistants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#todays-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Today's question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-already-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔁 What you already know
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✨ New today
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda-3-hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗓️ Agenda (3 hours)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-no-target-only-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. No target, only features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pca-the-direction-of-most-spread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PCA: the direction of most spread
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-k-means-assign-update-repeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. k-means: assign, update, repeat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-local-minima-why-n_init-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Local minima: why n_init matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-choosing-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Choosing k
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-profile-first-then-look-at-poverty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Profile first, then look at poverty
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-hierarchical-clustering-a-second-opinion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Hierarchical clustering: a second opinion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check your understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-session-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✍️ Before Session 9
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Next session
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="session-8-unlabeled-data-what-types-of-households-are-there">Session 8 · Unlabeled Data: What Types of Households Are There?</h1>
+<div class="usm-session-meta">
+<span>Friday 20 November 2026</span>
+<span>13:00 – 16:00</span>
+<a class="usm-tag-gold" href="../../program/#5-course-contents" title="Block F of the course contents in the Program">Syllabus block F · Unlabeled data</a>
+<span>Checkpoint 1 feedback · project clinic</span>
+</div>
+
+<div class="usm-actions usm-session-actions">
+<a class="usm-primary" href="../../notebooks/s08_unsupervised/">Notebook</a>
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s08_unsupervised.ipynb" target="_blank" rel="noopener">Open in Colab</a>
+<a href="#check-your-understanding">Check your understanding</a>
+</div>
+
+<div class="admonition info">
+<p class="admonition-title">Two halves today</p>
+<p>The first two hours cover PCA and clustering. The last 50 minutes are the <strong>project clinic</strong>:
+you get your Checkpoint 1 feedback and work on the final delivery with the instructor
+going group by group. Bring your notebook.</p>
+</div>
+<h2 id="todays-question">❓ Today's question</h2>
+<blockquote>
+<p>Social programmes are designed for <em>profiles</em>: older people living alone, young families with
+children, overcrowded households. Each needs a different offer. <strong>What types of households are
+there, if we never tell the algorithm who is poor?</strong> And once we have them, how different is
+poverty from one type to another?</p>
+</blockquote>
+<h2 id="what-you-already-know">🔁 What you already know</h2>
+<p>Everything so far was <strong>supervised</strong>: every model learned from an answer, either income
+(<a href="../class4/">Sessions 3–4</a>) or the label <code>poor</code> (<a href="../class5/">Sessions 5–7</a>). From
+<a href="../class4/">Session 4</a> you know why distances need <code>StandardScaler</code>. From Session 2 you know
+<code>groupby</code>, which is all you need to describe a group.</p>
+<h2 id="new-today">✨ New today</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unsupervised learning</strong></td>
+<td>Find structure in the features when there is no target</td>
+</tr>
+<tr>
+<td><code>PCA</code> · <code>explained_variance_ratio_</code> · <code>components_</code></td>
+<td>Summarise many correlated variables in a few new axes, and see what each axis is made of</td>
+</tr>
+<tr>
+<td><code>KMeans</code> (<code>n_clusters</code>, <code>n_init</code>, <code>random_state</code>, <code>inertia_</code>)</td>
+<td>Split households into k groups of similar profiles</td>
+</tr>
+<tr>
+<td>The elbow · <code>silhouette_score</code></td>
+<td>Two imperfect guides for choosing k</td>
+</tr>
+<tr>
+<td><code>scipy</code> <code>linkage</code> · <code>dendrogram</code> · <code>fcluster</code></td>
+<td>Hierarchical clustering, a second opinion on the same data</td>
+</tr>
+<tr>
+<td><strong>Cluster profiling</strong></td>
+<td>Describe each cluster in the original units, and only then look at the label</td>
+</tr>
+</tbody>
+</table>
+<h2 id="agenda-3-hours">🗓️ Agenda (3 hours)</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13:00 – 13:10</td>
+<td>Recap: from supervised to unsupervised</td>
+</tr>
+<tr>
+<td>13:10 – 14:10</td>
+<td>PCA · k-means · choosing k</td>
+</tr>
+<tr>
+<td>14:10 – 14:25</td>
+<td>Break</td>
+</tr>
+<tr>
+<td>14:25 – 15:10</td>
+<td><strong>Lab:</strong> profile the clusters, then look at poverty</td>
+</tr>
+<tr>
+<td>15:10 – 16:00</td>
+<td><strong>Project clinic:</strong> Checkpoint 1 feedback and questions on the final delivery</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents">📖 Contents</h2>
+<h3 id="1-no-target-only-features">1. No target, only features</h3>
+<p>In supervised learning, the error tells you whether you are right. In unsupervised learning
+there is no answer to check against, so the questions change:</p>
+<table>
+<thead>
+<tr>
+<th>Supervised (Sessions 3–7)</th>
+<th>Unsupervised (today)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"How well do we predict <code>poor</code>?"</td>
+<td>"Which households resemble each other?"</td>
+</tr>
+<tr>
+<td>Test error decides</td>
+<td>No test error. Usefulness and stability decide</td>
+</tr>
+<tr>
+<td>The target guides the model</td>
+<td>The <strong>variables you choose</strong> guide the model</td>
+</tr>
+</tbody>
+</table>
+<p>That last row is the key to today. We describe a household with ten variables about who lives in
+it and how: the head's age, schooling and weekly hours (0 if not working), female head, household
+size, children under 18, people over 60, rural, owns the home, overcrowded. <strong>Income and <code>poor</code> are
+never inputs.</strong> Poverty only enters at the end, to describe the groups.</p>
+<div class="admonition warning">
+<p class="admonition-title">One column, two meanings of <em>missing</em></p>
+<p><code>head_weekly_hours</code> is missing for heads who do not work (those get <strong>0</strong>) and for 87 working
+heads who did not know their hours. In the raw survey CASEN codes that "doesn't know" as −88, a
+trap the course file already removes. For those 87 heads, 0 would be wrong, so the notebook gives
+them the median hours of the people who work.</p>
+</div>
+<h3 id="2-pca-the-direction-of-most-spread">2. PCA: the direction of most spread</h3>
+<p>Picture the cloud of households on two axes, age and schooling (both standardised). Older heads
+had less schooling, so the cloud leans: it is long in one direction and narrow in the other.
+<strong>PCA rotates the axes</strong> so that the first one, <strong>PC1</strong>, runs along the long side, and <strong>PC2</strong>
+is perpendicular to it. Nothing about the households changes. We only describe them in better
+coordinates.</p>
+<div class="ml-widget" data-widget="pca-rotate"></div>
+
+<p>Formally, PC1 is the unit vector <span class="arithmatex">\(w\)</span> that maximises the variance of the projections <span class="arithmatex">\(z_i = w^\top x_i\)</span>.
+In plain words: among all ways of reducing each household to one number, PC1 keeps the most of how
+households differ. Each component has:</p>
+<ul>
+<li><strong>loadings</strong> (<code>components_</code>): how much each original variable contributes;</li>
+<li><strong>explained variance ratio</strong>: the share of total variance it captures;</li>
+<li><strong>scores</strong>: each household's coordinate on it.</li>
+</ul>
+<p>With all ten variables, PC1 explains <strong>31%</strong> of the variance and PC1 + PC2 together <strong>45%</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th style="text-align: right;">PC1 loading</th>
+<th style="text-align: right;">PC2 loading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>head_age</code></td>
+<td style="text-align: right;"><strong>0.50</strong></td>
+<td style="text-align: right;">0.13</td>
+</tr>
+<tr>
+<td><code>has_elderly</code></td>
+<td style="text-align: right;"><strong>0.46</strong></td>
+<td style="text-align: right;">0.15</td>
+</tr>
+<tr>
+<td><code>owns_home</code></td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.20</td>
+</tr>
+<tr>
+<td><code>household_size</code></td>
+<td style="text-align: right;">−0.26</td>
+<td style="text-align: right;"><strong>0.60</strong></td>
+</tr>
+<tr>
+<td><code>has_children</code></td>
+<td style="text-align: right;"><strong>−0.37</strong></td>
+<td style="text-align: right;"><strong>0.48</strong></td>
+</tr>
+<tr>
+<td><code>overcrowded</code></td>
+<td style="text-align: right;">−0.16</td>
+<td style="text-align: right;">0.36</td>
+</tr>
+<tr>
+<td><code>head_schooling_years</code></td>
+<td style="text-align: right;">−0.34</td>
+<td style="text-align: right;">−0.31</td>
+</tr>
+<tr>
+<td><code>head_weekly_hours</code></td>
+<td style="text-align: right;">−0.35</td>
+<td style="text-align: right;">−0.23</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PC1 ≈ life stage:</strong> older, retired homeowners versus working heads with children. <strong>PC2 ≈ size and
+crowding.</strong> You need six components to pass 80%: household life does not collapse into a single
+index.</p>
+<div class="admonition info">
+<p class="admonition-title">From econometrics to ML</p>
+<ul>
+<li>PCA is close to <strong>factor analysis</strong> and to the indices you have seen built from survey
+  variables. The DHS <em>wealth index</em> is the first principal component of household assets
+  (Filmer &amp; Pritchett, 2001), and PCA-based welfare indices are themselves used for targeting.</li>
+<li>PCs are <strong>uncorrelated by construction</strong>. Using the first few as regressors is
+  <em>principal components regression</em> (ISLR §6.3), a remedy for multicollinearity.</li>
+<li>A component has <strong>no causal meaning</strong>. "Life stage" is a name <em>we</em> give to a direction.</li>
+<li>Clustering has <strong>no ground truth</strong>: unlike a regression, there is no residual or test error
+  that says you got it right. You judge clusters by stability and by usefulness.</li>
+</ul>
+</div>
+<h3 id="3-k-means-assign-update-repeat">3. k-means: assign, update, repeat</h3>
+<p>k-means looks for k groups whose members are close to their group's centre, the <strong>centroid</strong>.
+It alternates two steps until nobody switches:</p>
+<ol>
+<li><strong>Assign</strong> each household to its nearest centroid.</li>
+<li><strong>Update</strong> each centroid to the mean of its households.</li>
+</ol>
+<p>Each step can only lower the <strong>inertia</strong>, the total squared distance from households to their
+centroids: <span class="arithmatex">\(\sum_i \lVert x_i - \mu_{c(i)} \rVert^2\)</span>. Press <em>Step</em> and watch both moves on real
+households, drawn on the first two principal components:</p>
+<div class="ml-widget" data-widget="kmeans-steps"></div>
+
+<div class="admonition example">
+<p class="admonition-title">Worked example by hand</p>
+<p>Six households, two standardised variables: age of head (<span class="arithmatex">\(z_\text{age}\)</span>, positive = older)
+and household size (<span class="arithmatex">\(z_\text{size}\)</span>, positive = larger). k = 2, starting centroids at
+households A and D.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">A</th>
+<th style="text-align: right;">B</th>
+<th style="text-align: right;">C</th>
+<th style="text-align: right;">D</th>
+<th style="text-align: right;">E</th>
+<th style="text-align: right;">F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(z_\text{age}\)</span></td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">−1.0</td>
+<td style="text-align: right;">−0.6</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(z_\text{size}\)</span></td>
+<td style="text-align: right;">−0.5</td>
+<td style="text-align: right;">−1.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Assign.</strong> Squared distance to <span class="arithmatex">\(c_1 = (1.0, -0.5)\)</span> and to <span class="arithmatex">\(c_2 = (-1.0, 1.0)\)</span>:</p>
+<ul>
+<li>B: <span class="arithmatex">\((0.2^2 + 0.5^2) = 0.29\)</span> vs <span class="arithmatex">\((2.2^2 + 2.0^2) = 8.84\)</span> → cluster 1</li>
+<li>C: <span class="arithmatex">\((0.2^2 + 0.5^2) = 0.29\)</span> vs <span class="arithmatex">\((1.8^2 + 1.0^2) = 4.24\)</span> → cluster 1</li>
+<li>E: <span class="arithmatex">\((1.6^2 + 0.9^2) = 3.37\)</span> vs <span class="arithmatex">\((0.4^2 + 0.6^2) = 0.52\)</span> → cluster 2</li>
+<li>F: <span class="arithmatex">\((0.8^2 + 1.1^2) = 1.85\)</span> vs <span class="arithmatex">\((1.2^2 + 0.4^2) = 1.60\)</span> → cluster 2 (a close call)</li>
+</ul>
+<p><strong>Update.</strong> Cluster 1 = {A, B, C}: <span class="arithmatex">\(c_1 = \big(\tfrac{1.0+1.2+0.8}{3}, \tfrac{-0.5-1.0+0.0}{3}\big) = (1.0, -0.5)\)</span>.
+Cluster 2 = {D, E, F}: <span class="arithmatex">\(c_2 = \big(\tfrac{-1.0-0.6+0.2}{3}, \tfrac{1.0+0.4+0.6}{3}\big) = (-0.47, 0.67)\)</span>.</p>
+<p><strong>Assign again.</strong> F is now at <span class="arithmatex">\(0.45\)</span> from <span class="arithmatex">\(c_2\)</span> and <span class="arithmatex">\(1.85\)</span> from <span class="arithmatex">\(c_1\)</span>, so it stays. Nobody
+switches: <strong>converged.</strong> Inertia <span class="arithmatex">\(= 0.58 + 0.93 = 1.51\)</span>.</p>
+<p>Reading: cluster 1 is <em>older, smaller households</em>; cluster 2 is <em>younger, larger households</em>.</p>
+</div>
+<h3 id="4-local-minima-why-n_init-matters">4. Local minima: why <code>n_init</code> matters</h3>
+<p>k-means only ever moves "downhill" from where it starts, so a bad start can leave it stuck. With
+k = 4 and one run per seed, five seeds give inertias from <strong>87,198 to 95,803</strong> and visibly
+different clusters. <code>n_init=50</code> runs the algorithm 50 times and keeps the run with the lowest
+inertia. On this data, <code>n_init=10</code> with <code>random_state=42</code> still ends in a worse solution (90,043),
+so we use 50. Report <code>n_init</code> and <code>random_state</code> with every clustering result.</p>
+<h3 id="5-choosing-k">5. Choosing k</h3>
+<p>Inertia always falls as k grows: with k = 15,000, every household is its own cluster. So we look for
+an <strong>elbow</strong>, where extra clusters stop paying off. The <strong>silhouette</strong> compares, for each
+household, the mean distance to its own cluster (<span class="arithmatex">\(a\)</span>) with the mean distance to the nearest
+other cluster (<span class="arithmatex">\(b\)</span>): <span class="arithmatex">\(s = (b - a) / \max(a, b)\)</span>. It runs from −1 to 1, and higher means better
+separated.</p>
+<div class="ml-widget" data-widget="cluster-profile"></div>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">k</th>
+<th style="text-align: right;">Inertia</th>
+<th style="text-align: right;">Silhouette</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">114,527</td>
+<td style="text-align: right;">0.228</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">99,309</td>
+<td style="text-align: right;"><strong>0.251</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">87,197</td>
+<td style="text-align: right;">0.219</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">78,908</td>
+<td style="text-align: right;">0.218</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">73,732</td>
+<td style="text-align: right;">0.217</td>
+</tr>
+</tbody>
+</table>
+<p>An honest reading: <strong>there is no sharp elbow, and every silhouette is low.</strong> Households form a
+continuum, not islands. That is normal with social data, and you should say so. The silhouette
+prefers k = 3, but k = 3 puts families with and without children in one group (57% with
+children), which is exactly the distinction a family programme cares about. Going from 3 to 4
+clusters still cuts inertia by 12,100, while from 4 to 5 the gain drops to 8,300. We take
+<strong>k = 4</strong>, and we say why.</p>
+<h3 id="6-profile-first-then-look-at-poverty">6. Profile first, then look at poverty</h3>
+<p>A cluster is a number until you describe it in the original units:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">Older households</th>
+<th style="text-align: right;">Families with children</th>
+<th style="text-align: right;">Working adults, no children</th>
+<th style="text-align: right;">Overcrowded families</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Households</td>
+<td style="text-align: right;">5,888</td>
+<td style="text-align: right;">4,599</td>
+<td style="text-align: right;">3,934</td>
+<td style="text-align: right;">579</td>
+</tr>
+<tr>
+<td>Age of head</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr>
+<td>Weekly hours worked</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">31</td>
+</tr>
+<tr>
+<td>With children</td>
+<td style="text-align: right;">8%</td>
+<td style="text-align: right;">100%</td>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">89%</td>
+</tr>
+<tr>
+<td>With someone 60+</td>
+<td style="text-align: right;">97%</td>
+<td style="text-align: right;">13%</td>
+<td style="text-align: right;">13%</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr>
+<td>Owns the home</td>
+<td style="text-align: right;">80%</td>
+<td style="text-align: right;">52%</td>
+<td style="text-align: right;">45%</td>
+<td style="text-align: right;">32%</td>
+</tr>
+<tr>
+<td>Overcrowded</td>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">100%</td>
+</tr>
+<tr>
+<td><strong>Poverty rate</strong> (revealed last)</td>
+<td style="text-align: right;">23.7%</td>
+<td style="text-align: right;">26.4%</td>
+<td style="text-align: right;"><strong>15.8%</strong></td>
+<td style="text-align: right;"><strong>40.2%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The algorithm never saw who is poor, yet poverty ranges from 16% to 40% across the clusters
+(23.1% overall). Two cautions:</p>
+<ul>
+<li>This is <strong>description, not explanation</strong>. Clusters do not say <em>why</em> a household is poor.</li>
+<li>The overcrowded cluster has the highest rate but holds only <strong>233 of 3,464</strong> poor households
+  (7%). A subsidy aimed at that cluster alone would miss 93% of the poor. Targeting is the job of
+  the supervised models from Sessions 5–7. Clusters help design <em>what</em> to offer each group.</li>
+</ul>
+<h3 id="7-hierarchical-clustering-a-second-opinion">7. Hierarchical clustering: a second opinion</h3>
+<p><strong>Agglomerative clustering</strong> starts with every household on its own and repeatedly merges the two
+closest groups. With <strong>Ward linkage</strong>, "closest" means the merge that increases within-cluster
+variance the least, the same objective as k-means. The <strong>dendrogram</strong> shows the whole merge history,
+and cutting it at a height gives clusters. It needs every pairwise distance, so the notebook uses
+500 households. Cut into four groups, <strong>437 of 500 (87%)</strong> fall into clusters that match the k-means
+ones: two algorithms, same four profiles. The disagreements are households that sit between
+profiles.</p>
+<h3 id="common-mistakes">Common mistakes</h3>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Why it hurts</th>
+<th>How to avoid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clustering unscaled variables</td>
+<td>Age (sd 16.5) and hours (sd 22.7) decide everything; unscaled k = 4 just splits by age and hours worked</td>
+<td><code>StandardScaler</code> before PCA and k-means</td>
+</tr>
+<tr>
+<td>Putting income or <code>poor</code> in the inputs</td>
+<td>You "discover" poverty segments you built in</td>
+<td>Keep the label out; attach it only after clustering</td>
+</tr>
+<tr>
+<td>One run, default seed</td>
+<td>Local minima: different clusters every time</td>
+<td><code>n_init=50</code>, fixed <code>random_state</code>, report both</td>
+</tr>
+<tr>
+<td>Treating a silhouette of 0.2 as "clear types"</td>
+<td>It signals a continuum, not separate groups</td>
+<td>Say how weak the structure is; check stability</td>
+</tr>
+<tr>
+<td>Ignoring rare 0/1 variables</td>
+<td>After scaling, a 1 in <code>overcrowded</code> (4% of households) becomes z ≈ 5 and grabs a cluster</td>
+<td>Decide deliberately whether that segment is what you want</td>
+</tr>
+<tr>
+<td>Naming clusters as natural or causal types</td>
+<td>"Life stage causes poverty" is not in the data</td>
+<td>Names are labels for discussion, not findings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="check-your-understanding">✅ Check your understanding</h2>
+<details class="question">
+<summary>1. Why must you standardise before PCA? What would PC1 be on the raw variables?</summary>
+<p>PCA looks for the direction of largest variance. On raw data, variance depends on units:
+<code>head_weekly_hours</code> has a standard deviation of about 23 and <code>head_age</code> about 16.5, while the
+0/1 variables are below 0.5. PC1 would essentially be "hours and age" because those numbers
+are bigger, not because they matter more. Standardising gives every variable variance 1, so
+PCA finds shared patterns rather than large units.</p>
+</details>
+<details class="question">
+<summary>2. Two standardised variables have correlation r = −0.6. What share of the variance does PC1 keep?</summary>
+<p>With two standardised variables, PC1 keeps <span class="arithmatex">\((1 + |r|)/2 = (1 + 0.6)/2 = 0.80\)</span>, or 80%.
+The sign does not matter, only the strength. With r = 0 it would keep 50%: no direction is
+better than another. In our data r = −0.498, so PC1 keeps 74.9%.</p>
+</details>
+<details class="question">
+<summary>3. Redo the worked example starting from centroids B and F. Where does it end?</summary>
+<p>First assignment: A goes to B (0.29 vs 1.85), C goes to <strong>F</strong> (1.16 vs 0.72), D and E go
+to F. So cluster 1 = {A, B}, cluster 2 = {C, D, E, F}. Update: <span class="arithmatex">\(c_1 = (1.1, -0.75)\)</span>,
+<span class="arithmatex">\(c_2 = (-0.15, 0.5)\)</span>. Assign again: C is now at 0.65 from <span class="arithmatex">\(c_1\)</span> and 1.15 from <span class="arithmatex">\(c_2\)</span>, so it
+switches. One more update gives exactly the first solution, {A, B, C} and {D, E, F}, with
+inertia 1.51. Different starts can take different paths. On real data they can also <em>end</em> in
+different places, which is why we use <code>n_init</code>.</p>
+</details>
+<details class="question">
+<summary>4. The silhouette is highest at k = 3. Isn't choosing k = 4 cheating?</summary>
+<p>No, as long as you say so. Neither criterion is a test: all silhouettes are low (0.21–0.25),
+and the elbow is soft. k = 4 separates families with and without children, a distinction
+with direct policy use, and the inertia gain from 3 to 4 (12,100) is still clearly larger than
+from 4 to 5 (8,300). Cheating would be reporting k = 4 as "what the data says" and hiding the
+silhouette.</p>
+</details>
+<details class="question">
+<summary>5. A minister proposes paying the subsidy only to the 'overcrowded families' cluster, since 40% of them are poor. What do you answer?</summary>
+<p>That cluster contains 233 of the 3,464 poor households in the sample: about 7%. Used as a
+targeting rule, it would have a recall of 0.07, far below the Session 5 logit at any sensible
+threshold, and it would still pay 346 non-poor households. The clusters are useful to design
+the offer (overcrowded families may need housing support more than cash). Deciding <em>who</em> gets
+the subsidy is a prediction problem, and Sessions 5–7 handle it with the right metrics.</p>
+</details>
+<h2 id="lab">🧪 Lab</h2>
+<p>The notebook rebuilds every number on this page: the -88 fix, PCA, the local-minimum demo, the
+choice of k, the profiles, poverty by cluster, the unscaled comparison and the dendrogram.</p>
+<p><a href="../../notebooks/s08_unsupervised/">📓 Session 8 — Unlabeled Data</a> ·
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s08_unsupervised.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="admonition example">
+<p class="admonition-title">Assistant skill: review the plot, not just the code</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>I clustered 15,000 Chilean households into 4 groups with k-means on 10 standardised variables
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>(paste the list). Write code for (1) a scatter of the first two PCA scores coloured by cluster,
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>with the explained variance in each axis label, and (2) a bar chart of the cluster profiles in
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>the original units. Then describe each cluster in one sentence.
+</code></pre></div>
+Then check, line by line:</p>
+<ul>
+<li>Do the axis labels show the real explained variance (31% and 15%)?</li>
+<li>Is the profile chart in original units or z-scores, and does it say which?</li>
+<li>Is every claim in its descriptions backed by a number in your profile table?</li>
+<li>Did it call the clusters "natural types", or suggest they <em>cause</em> poverty?</li>
+</ul>
+<p>Every correction goes into your assistant log.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Key takeaways</p>
+<ul>
+<li>Unsupervised learning has no target and no test error. <strong>The variables you choose define
+  the answer</strong>, so choose them deliberately and keep the label out.</li>
+<li><strong>PCA</strong> rotates standardised data onto directions of maximum variance. Read the loadings to
+  name a component, and the explained variance to know how much it keeps.</li>
+<li><strong>k-means</strong> alternates <em>assign</em> and <em>update</em>. It finds a local minimum, so run it many times
+  (<code>n_init</code>) with a fixed <code>random_state</code>.</li>
+<li>Choose k with the elbow, the silhouette <strong>and</strong> the use you will give the segments, and
+  report all three.</li>
+<li>Profile clusters in the original units first, and attach the label only afterwards.
+  Clusters describe; they do not target and do not explain.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Z</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>                       <span class="c1"># F: features, never the label</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z</span><span class="p">);</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">silhouette_score</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">sample</span><span class="p">],</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">[</span><span class="n">sample</span><span class="p">])</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">F</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">cluster</span><span class="o">=</span><span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"cluster"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>      <span class="c1"># profile, then add df["poor"]</span>
+</code></pre></div>
+</div>
+<h2 id="before-session-9">✍️ Before Session 9</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Finish the three notebook exercises (drop <code>overcrowded</code>, cluster on 3 PCs, try k = 6).</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Read ISLR (2nd ed.), sections 12.2 (PCA) and 12.4 (clustering). See the
+      <a href="../../program/#7-readings">Program</a>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Apply the Checkpoint 1 feedback. If you use PCA or clustering as your third family of
+      methods, say what you would do differently <em>because</em> of the segments.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Final delivery due <strong>Thursday 26 November, 23:59</strong>. Rehearse your 12-minute presentation
+      once, with a timer.</li>
+</ul>
+<h2 id="next-session">📚 Next session</h2>
+<p><a href="../class9/">Session 9</a> (Friday 27 November): <strong>final presentations</strong>. You present your own
+model and defend every choice in it, from the target and the metric to the leakage checks and the
+recommendation.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../class7/" class="md-footer__link md-footer__link--prev" aria-label="Previous: S7 · 13 Nov · Selection and Shrinkage">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                S7 · 13 Nov · Selection and Shrinkage
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../class9/" class="md-footer__link md-footer__link--next" aria-label="Next: S9 · 27 Nov · Final Presentations">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                S9 · 27 Nov · Final Presentations
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hizocar" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.footer", "navigation.tabs", "content.code.annotate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+      
+        <script src="../../javascripts/ml-widgets.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s06.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s07.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s08.js"></script>
+      
+        <script src="../../javascripts/course-now.js"></script>
+      
+    
+  </body>
+</html>

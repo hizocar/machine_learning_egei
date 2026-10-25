@@ -2,78 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/archive/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/case/</loc>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/code-assistants/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/glossary/</loc>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/program/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/projects/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/classes/class1/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/classes/class2/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/classes/class3/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/classes/class4/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/classes/class5/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/classes/class6/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/classes/class7/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/classes/class8/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/classes/class9/</loc>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/classes/classes/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/homeworks/Final%20Project/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/homeworks/Python_Basics_Homework/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/homeworks/homework_III/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
          <loc>https://hizocar.github.io/machine_learning_egei/homeworks/lab1/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/class1/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/s01_types_of_data/</loc>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/class2/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/s02_data_manipulation/</loc>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/class3/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/s03_ml_models/</loc>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/class4/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/s04_pipeline/</loc>
+         <lastmod>2026-10-25</lastmod>
     </url>
     <url>
-         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/class5/</loc>
-         <lastmod>2026-09-22</lastmod>
+         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/s05_classification/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/s06_trees/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/s07_shrinkage/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://hizocar.github.io/machine_learning_egei/notebooks/s08_unsupervised/</loc>
+         <lastmod>2026-10-25</lastmod>
     </url>
 </urlset>

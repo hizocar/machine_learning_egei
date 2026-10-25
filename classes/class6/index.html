@@ -1,0 +1,2100 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Machine Learning with AI coding assistants — EGEI">
+      
+      
+        <meta name="author" content="Sebastian Azocar">
+      
+      
+        <link rel="canonical" href="https://hizocar.github.io/machine_learning_egei/classes/class6/">
+      
+      
+        <link rel="prev" href="../class5/">
+      
+      
+        <link rel="next" href="../class7/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/usm_favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>S6 · 6 Nov · Trees and Ensembles - Machine Learning — EGEI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s06.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s07.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s08.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#session-6-trees-and-ensembles-can-flexibility-find-whom-the-logit-misses" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Machine Learning — EGEI" class="md-header__button md-logo" aria-label="Machine Learning — EGEI" data-md-component="logo">
+      
+  <img src="../../images/usm_shield.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Machine Learning — EGEI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              S6 · 6 Nov · Trees and Ensembles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../classes/" class="md-tabs__link">
+          
+  
+  
+  Classes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../projects/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../case/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  The Case
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../program/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Program
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../code-assistants/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Code Assistants
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Machine Learning — EGEI" class="md-nav__button md-logo" aria-label="Machine Learning — EGEI" data-md-component="logo">
+      
+  <img src="../../images/usm_shield.png" alt="logo">
+
+    </a>
+    Machine Learning — EGEI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Classes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S1 · 11 Sep · Data and Decision Making
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S2 · 25 Sep · Data Manipulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S3 · 2 & 9 Oct · What Is ML?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S4 · 23 Oct · The ML Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S5 · 30 Oct · Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S6 · 6 Nov · Trees and Ensembles
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S6 · 6 Nov · Trees and Ensembles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#todays-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Today's question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-already-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔁 What you already know
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✨ New today
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda-3-hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗓️ Agenda (3 hours)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a-tree-is-a-sequence-of-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A tree is a sequence of questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-choosing-a-question-the-gini-impurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Choosing a question: the Gini impurity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-tree-we-actually-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The tree we actually get
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-how-deep-overfitting-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. How deep? Overfitting, again
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-many-trees-bagging-and-random-forests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Many trees: bagging and random forests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-trees-that-learn-from-their-mistakes-gradient-boosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Trees that learn from their mistakes: gradient boosting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-the-race-done-properly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. The race, done properly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-what-does-the-forest-rely-on-permutation-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. What does the forest rely on? Permutation importance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-accuracy-vs-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Accuracy vs. explanation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check your understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-session-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✍️ Before Session 7
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Next session
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S7 · 13 Nov · Selection and Shrinkage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S8 · 20 Nov · Unlabeled Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S9 · 27 Nov · Final Presentations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Program
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Assistants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#todays-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Today's question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-already-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔁 What you already know
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✨ New today
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda-3-hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗓️ Agenda (3 hours)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a-tree-is-a-sequence-of-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A tree is a sequence of questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-choosing-a-question-the-gini-impurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Choosing a question: the Gini impurity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-tree-we-actually-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The tree we actually get
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-how-deep-overfitting-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. How deep? Overfitting, again
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-many-trees-bagging-and-random-forests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Many trees: bagging and random forests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-trees-that-learn-from-their-mistakes-gradient-boosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Trees that learn from their mistakes: gradient boosting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-the-race-done-properly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. The race, done properly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-what-does-the-forest-rely-on-permutation-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. What does the forest rely on? Permutation importance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-accuracy-vs-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Accuracy vs. explanation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check your understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-session-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✍️ Before Session 7
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Next session
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="session-6-trees-and-ensembles-can-flexibility-find-whom-the-logit-misses">Session 6 · Trees and Ensembles: Can Flexibility Find Whom the Logit Misses?</h1>
+<div class="usm-session-meta">
+<span>Friday 6 November 2026</span>
+<span>13:00 – 16:00</span>
+<a class="usm-tag-gold" href="../../program/#5-course-contents" title="Block D of the course contents in the Program">Syllabus block D · Trees and Forests</a>
+<span class="usm-tag-skill">Assistant skill: refactoring into functions</span>
+</div>
+
+<div class="usm-actions usm-session-actions">
+<a class="usm-primary" href="../../notebooks/s06_trees/">Notebook</a>
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s06_trees.ipynb" target="_blank" rel="noopener">Open in Colab</a>
+<a href="#check-your-understanding">Check your understanding</a>
+</div>
+
+<h2 id="todays-question">❓ Today's question</h2>
+<blockquote>
+<p>The Session 5 logit is a straight line on the log-odds scale: every variable pushes the probability
+up or down by the same amount, whatever the other variables say. Real poverty is full of
+interactions: working few hours matters more if there are children to feed. <strong>Can a more flexible
+model find the poor households the logit misses, and what do we give up in exchange?</strong></p>
+</blockquote>
+<h2 id="what-you-already-know">🔁 What you already know</h2>
+<ul>
+<li><a href="../class3/">Session 3</a>: flexible models overfit. KNN with k = 1 memorises.</li>
+<li><a href="../class4/">Session 4</a>: pipelines, cross-validation, and never choosing with the test set.</li>
+<li><a href="../class5/">Session 5</a>: the logit, AUC, and the threshold as a policy decision (cost = 3·FN + FP),
+  chosen with <code>cross_val_predict</code> on the training set.</li>
+</ul>
+<h2 id="new-today">✨ New today</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DecisionTreeClassifier</code></td>
+<td>Predict with a sequence of yes/no questions learned from the data</td>
+</tr>
+<tr>
+<td>Gini impurity</td>
+<td>Measure how mixed a group is, to choose each question</td>
+</tr>
+<tr>
+<td><code>max_depth</code> · <code>min_samples_leaf</code></td>
+<td>Stop a tree from memorising the training set</td>
+</tr>
+<tr>
+<td><code>plot_tree</code> · <code>export_text</code></td>
+<td>Read a fitted tree as rules</td>
+</tr>
+<tr>
+<td>Bootstrap · bagging</td>
+<td>Average many trees fitted on resampled data to cancel their noise</td>
+</tr>
+<tr>
+<td><code>RandomForestClassifier</code> · out-of-bag score</td>
+<td>Bagging plus random subsets of variables, with free validation</td>
+</tr>
+<tr>
+<td><code>HistGradientBoostingClassifier</code></td>
+<td>Add small trees in sequence, each correcting the errors of the previous ones</td>
+</tr>
+<tr>
+<td><code>permutation_importance</code></td>
+<td>Ask how much a model relies on each variable</td>
+</tr>
+</tbody>
+</table>
+<h2 id="agenda-3-hours">🗓️ Agenda (3 hours)</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13:00 – 13:15</td>
+<td>Recap: the logit, its threshold and its blind spots</td>
+</tr>
+<tr>
+<td>13:15 – 14:10</td>
+<td>Decision trees: Gini, splits, depth and overfitting</td>
+</tr>
+<tr>
+<td>14:10 – 14:25</td>
+<td>Break</td>
+</tr>
+<tr>
+<td>14:25 – 15:05</td>
+<td>Ensembles: bagging, random forests, boosting</td>
+</tr>
+<tr>
+<td>15:05 – 15:35</td>
+<td><strong>Lab:</strong> the race, refactored into functions · permutation importance</td>
+</tr>
+<tr>
+<td>15:35 – 16:00</td>
+<td>Project work: Checkpoint 1 questions (due Thursday 12 November)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents">📖 Contents</h2>
+<h3 id="1-a-tree-is-a-sequence-of-questions">1. A tree is a sequence of questions</h3>
+<p>Imagine a social worker with a clipboard. The first question splits the households into two piles;
+each pile gets its own next question, and so on. After a few questions, each final pile (a <strong>leaf</strong>)
+is a group of similar households, and the model predicts the share of poor households in that pile.</p>
+<p>The tree learns which questions to ask. To do that it needs a way to say how good a pile is.</p>
+<h3 id="2-choosing-a-question-the-gini-impurity">2. Choosing a question: the Gini impurity</h3>
+<p>A group with a share <span class="arithmatex">\(p\)</span> of poor households has <strong>Gini impurity</strong></p>
+<div class="arithmatex">\[G = 1 - p^2 - (1-p)^2 = 2p(1-p)\]</div>
+<p>In words: pick two households at random from the group. <span class="arithmatex">\(G\)</span> is the probability that one is poor and
+the other is not. A pure group (all poor, or none) has <span class="arithmatex">\(G = 0\)</span>; a 50/50 group has the maximum,
+<span class="arithmatex">\(G = 0.5\)</span>. A split is scored by the <strong>weighted average</strong> impurity of the two groups it creates, and
+the tree keeps the split with the lowest score.</p>
+<div class="admonition example">
+<p class="admonition-title">Worked example by hand</p>
+<p>Eight households, three of them poor:</p>
+<table>
+<thead>
+<tr>
+<th>Household</th>
+<th style="text-align: right;">Years of schooling</th>
+<th style="text-align: right;">Household size</th>
+<th style="text-align: center;">Poor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: center;">✔</td>
+</tr>
+<tr>
+<td>H2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;">✔</td>
+</tr>
+<tr>
+<td>H3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>H4</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: center;">✔</td>
+</tr>
+<tr>
+<td>H5</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>H6</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>H7</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>H8</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Before any split:</strong> <span class="arithmatex">\(p = 3/8 = 0.375\)</span>, so <span class="arithmatex">\(G = 2 \times 0.375 \times 0.625 = 0.469\)</span>.</p>
+<p><strong>Split A, "schooling ≤ 10?"</strong>
+- <em>Yes</em> group: H1–H4, 3 poor out of 4, so <span class="arithmatex">\(G = 2 \times 0.75 \times 0.25 = 0.375\)</span>.
+- <em>No</em> group: H5–H8, 0 poor out of 4, so <span class="arithmatex">\(G = 0\)</span>.
+- Weighted: <span class="arithmatex">\(\tfrac{4}{8} \times 0.375 + \tfrac{4}{8} \times 0 = 0.188\)</span>.</p>
+<p><strong>Split B, "household size ≤ 3?"</strong>
+- <em>Yes</em> group: H2, H3, H5, H6, H8, 1 poor out of 5, so <span class="arithmatex">\(G = 2 \times 0.2 \times 0.8 = 0.320\)</span>.
+- <em>No</em> group: H1, H4, H7, 2 poor out of 3, so <span class="arithmatex">\(G = 2 \times \tfrac{2}{3} \times \tfrac{1}{3} = 0.444\)</span>.
+- Weighted: <span class="arithmatex">\(\tfrac{5}{8} \times 0.320 + \tfrac{3}{8} \times 0.444 = 0.367\)</span>.</p>
+<p>Split A removes <span class="arithmatex">\(0.469 - 0.188 = 0.281\)</span> of impurity and split B only <span class="arithmatex">\(0.102\)</span>, so the tree asks
+about schooling first. A real tree does this for every variable and every possible cut, then
+repeats inside each group.</p>
+</div>
+<p>Now try it on the 11,250 training households. On real data no single variable separates poor from
+non-poor cleanly. The best cut on schooling (≤ 12) only takes the impurity from 0.355 to 0.346.</p>
+<div class="ml-widget" data-widget="tree-split"></div>
+
+<p>Notice what the tree does <strong>not</strong> need: scaling. "Schooling ≤ 12" is the same question in years or
+in standard deviations. Categories still need one-hot encoding, because scikit-learn's trees split on
+numbers.</p>
+<h3 id="3-the-tree-we-actually-get">3. The tree we actually get</h3>
+<p>Fitted on all the variables, the first question is <strong>"does the head work 27.5 hours a week or
+less?"</strong>, a group that includes heads who do not work at all. On the <em>yes</em> side 33% of households are
+poor; on the <em>no</em> side, 13%. The next questions differ by branch: for low-hours households the tree
+asks about the head's age, then about housing tenure or household size; for full-time workers it asks
+whether there are children, then about the type of job or schooling. That is an <strong>interaction</strong>,
+found without anyone writing it down.</p>
+<h3 id="4-how-deep-overfitting-again">4. How deep? Overfitting, again</h3>
+<p>Every extra level doubles the number of groups. Deep enough, each leaf holds a handful of households
+and the tree memorises them: it is KNN with k = 1 all over again. Move the slider and watch both the
+curves and the tree.</p>
+<div class="ml-widget" data-widget="tree-depth"></div>
+
+<table>
+<thead>
+<tr>
+<th>Tree</th>
+<th style="text-align: right;">Train AUC</th>
+<th style="text-align: right;">CV AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_depth=3</code></td>
+<td style="text-align: right;">0.738</td>
+<td style="text-align: right;">0.735</td>
+</tr>
+<tr>
+<td><code>max_depth=6</code> (best by CV)</td>
+<td style="text-align: right;">0.795</td>
+<td style="text-align: right;">0.759</td>
+</tr>
+<tr>
+<td><code>max_depth=12</code></td>
+<td style="text-align: right;">0.929</td>
+<td style="text-align: right;">0.693</td>
+</tr>
+<tr>
+<td>No limit</td>
+<td style="text-align: right;"><strong>1.000</strong></td>
+<td style="text-align: right;"><strong>0.618</strong></td>
+</tr>
+<tr>
+<td>No depth limit, <code>min_samples_leaf=100</code></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">0.763</td>
+</tr>
+<tr>
+<td><em>Logit, for reference</em></td>
+<td style="text-align: right;"><em>0.789</em></td>
+<td style="text-align: right;"><em>0.781</em></td>
+</tr>
+</tbody>
+</table>
+<p>Even the best single tree stays below the logit. A tree is flexible but <strong>unstable</strong>: change a few
+households and the first question can change, and everything below it with it.</p>
+<h3 id="5-many-trees-bagging-and-random-forests">5. Many trees: bagging and random forests</h3>
+<p>The cure for instability is to grow many trees and average them.</p>
+<ol>
+<li><strong>Bootstrap:</strong> draw 11,250 households <em>with replacement</em> from the training set. Some appear twice,
+   and about a third are left out.</li>
+<li><strong>Bagging</strong> (<em>bootstrap aggregating</em>): fit one deep tree per bootstrap sample and average their
+   probabilities. Each tree overfits in its own way, and the average cancels much of that noise.</li>
+<li><strong>Random forest:</strong> at each split, a tree may only consider a random subset of the variables
+   (<code>max_features</code>, by default the square root of their number). The trees become more different
+   from each other, so their average improves further.</li>
+</ol>
+<p>The households a tree never saw are its <strong>out-of-bag</strong> sample: a free validation set.</p>
+<div class="ml-widget" data-widget="forest-vote"></div>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">CV AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bagging (all variables at each split)</td>
+<td style="text-align: right;">0.787 ± 0.004</td>
+</tr>
+<tr>
+<td>Random forest (300 trees, <code>min_samples_leaf=5</code>)</td>
+<td style="text-align: right;"><strong>0.797 ± 0.007</strong></td>
+</tr>
+<tr>
+<td>Random forest, out-of-bag AUC (no CV needed)</td>
+<td style="text-align: right;">0.798</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-trees-that-learn-from-their-mistakes-gradient-boosting">6. Trees that learn from their mistakes: gradient boosting</h3>
+<p>A forest grows its trees <strong>independently</strong> and averages them. Boosting grows them <strong>in sequence</strong>:
+each new tree is small, and it is fitted to what the current model still gets wrong. It is added with
+a small weight (<code>learning_rate</code>), so the model improves step by step. Too many steps overfit, so
+<code>HistGradientBoostingClassifier</code> sets aside 10% of the training data and <strong>stops early</strong> when that
+held-out score stops improving.</p>
+<div class="admonition info">
+<p class="admonition-title">From econometrics to ML</p>
+<ul>
+<li>In a regression, an interaction exists only if you write <code>hours × children</code> into the model. A
+  tree finds interactions and thresholds on its own. That is its strength, and also why it
+  overfits.</li>
+<li>A tree has no coefficients and no standard errors. You cannot ask "is schooling significant?".
+  You can ask "how much worse does the model predict without schooling?" (section 8).</li>
+<li>Bagging is the bootstrap you know from econometrics. There it estimated the variability of an
+  estimator; here it <em>reduces</em> the variability of a prediction by averaging.</li>
+<li>None of these models is causal. A tree that splits on hours of work is not saying that more
+  hours would lift a household out of poverty.</li>
+</ul>
+</div>
+<h3 id="7-the-race-done-properly">7. The race, done properly</h3>
+<p>Four models, compared with the <strong>same</strong> 5 folds and the <strong>same</strong> test set. Each model gets its own
+threshold, chosen to minimise 3·FN + FP on <strong>out-of-fold</strong> probabilities (<code>cross_val_predict</code>) from
+the training set, never on the test set.</p>
+<div class="ml-widget" data-widget="model-race"></div>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align: right;">Train AUC</th>
+<th style="text-align: right;">CV AUC</th>
+<th style="text-align: right;">Test AUC</th>
+<th style="text-align: right;">Threshold</th>
+<th style="text-align: right;">Recall</th>
+<th style="text-align: right;">Precision</th>
+<th style="text-align: right;">Cost 3·FN + FP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logit (Session 5)</td>
+<td style="text-align: right;">0.789</td>
+<td style="text-align: right;">0.781 ± 0.009</td>
+<td style="text-align: right;">0.794</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.680</td>
+<td style="text-align: right;">0.454</td>
+<td style="text-align: right;">1,540</td>
+</tr>
+<tr>
+<td>Tree (depth 4)</td>
+<td style="text-align: right;">0.757</td>
+<td style="text-align: right;">0.746 ± 0.009</td>
+<td style="text-align: right;">0.767</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.682</td>
+<td style="text-align: right;">0.446</td>
+<td style="text-align: right;">1,560</td>
+</tr>
+<tr>
+<td>Random forest</td>
+<td style="text-align: right;">0.903</td>
+<td style="text-align: right;">0.797 ± 0.007</td>
+<td style="text-align: right;">0.814</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.745</td>
+<td style="text-align: right;"><strong>0.460</strong></td>
+<td style="text-align: right;"><strong>1,421</strong></td>
+</tr>
+<tr>
+<td>Gradient boosting</td>
+<td style="text-align: right;">0.910</td>
+<td style="text-align: right;"><strong>0.798 ± 0.007</strong></td>
+<td style="text-align: right;"><strong>0.815</strong></td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;"><strong>0.788</strong></td>
+<td style="text-align: right;">0.439</td>
+<td style="text-align: right;">1,422</td>
+</tr>
+</tbody>
+</table>
+<p>The ensembles gain about <strong>0.02 of AUC</strong> and cut the policy cost by about <strong>8%</strong>. The forest reaches
+75% of poor households against the logit's 68%, at slightly better precision; boosting picks a lower
+threshold and reaches 79%, at lower precision, for the same total cost. That gain is real, but it is
+not a revolution, and it comes at a price (section 9).</p>
+<h3 id="8-what-does-the-forest-rely-on-permutation-importance">8. What does the forest rely on? Permutation importance</h3>
+<p><code>feature_importances_</code> (impurity importance) adds up how much each column reduced the Gini while the
+trees were being <em>trained</em>, and it favours variables with many possible cut points.
+<strong>Permutation importance</strong> asks a cleaner question on the <em>test</em> set: if I shuffle this column so it
+carries no information, how much AUC does the model lose?</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th style="text-align: right;">AUC lost when shuffled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>head_age</code></td>
+<td style="text-align: right;">0.037</td>
+</tr>
+<tr>
+<td><code>head_weekly_hours</code></td>
+<td style="text-align: right;">0.031</td>
+</tr>
+<tr>
+<td><code>has_children</code></td>
+<td style="text-align: right;">0.029</td>
+</tr>
+<tr>
+<td><code>housing_tenure</code></td>
+<td style="text-align: right;">0.028</td>
+</tr>
+<tr>
+<td><code>household_type</code></td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr>
+<td><code>has_elderly</code></td>
+<td style="text-align: right;">0.018</td>
+</tr>
+</tbody>
+</table>
+<p>Two cautions. Importance describes what the model <strong>uses to predict</strong>, not what <strong>causes</strong> poverty.
+And when two variables carry the same information (years of schooling and education level), shuffling
+one costs little, because the other covers for it.</p>
+<h3 id="9-accuracy-vs-explanation">9. Accuracy vs. explanation</h3>
+<p>A household excluded from a programme has the right to ask <em>why</em>. With a depth-3 or depth-4 tree the
+answer is a short chain of questions: "the head works more than 27.5 hours, there are no children, and
+the head is not self-employed". With 300 trees there is no short answer. Against the depth-4 tree,
+the forest gains about 0.05 of AUC and saves about 140 cost units on 3,750 test households. Whether
+that is worth the loss of transparency is a decision for the programme. Your job is to put both
+numbers on the table.</p>
+<h3 id="common-mistakes">Common mistakes</h3>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Why it hurts</th>
+<th>How to avoid it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Growing a tree with no limits</td>
+<td>Train AUC 1.000, CV AUC 0.618: pure memorisation</td>
+<td>Set <code>max_depth</code> or <code>min_samples_leaf</code> and choose them by CV</td>
+</tr>
+<tr>
+<td>Comparing models on different splits</td>
+<td>Differences can be luck of the split, not the model</td>
+<td>Same <code>cv</code> object and same test set for every model</td>
+</tr>
+<tr>
+<td>Reading <code>feature_importances_</code> as causal effects</td>
+<td>Importance is about prediction, and impurity importance is biased</td>
+<td>Use permutation importance, and still don't read it causally</td>
+</tr>
+<tr>
+<td>Choosing each model's threshold on the test set</td>
+<td>The comparison becomes optimistic, the Leak C of Session 4</td>
+<td><code>cross_val_predict</code> on the training set</td>
+</tr>
+<tr>
+<td>Keeping the forest because its AUC is highest</td>
+<td>You lose the ability to explain each decision</td>
+<td>Report the trade-off and let the decision-maker weigh it</td>
+</tr>
+<tr>
+<td>Scaling features "just in case" before a tree</td>
+<td>Harmless but useless, and it adds a step you must explain</td>
+<td>Trees only need numbers, not comparable scales</td>
+</tr>
+</tbody>
+</table>
+<h2 id="check-your-understanding">✅ Check your understanding</h2>
+<details class="question">
+<summary>1. A leaf holds 50 households, 10 of them poor. What is its Gini impurity, and what probability does the tree predict for a new household that lands there?</summary>
+<p><span class="arithmatex">\(p = 10/50 = 0.2\)</span>, so <span class="arithmatex">\(G = 2 \times 0.2 \times 0.8 = 0.32\)</span>. The tree predicts the leaf's poverty
+share: a probability of 0.2. Whether that household gets the subsidy depends on the threshold
+(0.24 for the forest, 0.26 for the logit), not on the tree.</p>
+</details>
+<details class="question">
+<summary>2. The unrestricted tree has a train AUC of 1.000 and a CV AUC of 0.618. Explain both numbers.</summary>
+<p>With no depth limit, the tree keeps splitting until each leaf is pure, often a single household,
+so it predicts every training household perfectly (AUC 1.000). Those leaves describe individual
+households, not patterns, so on households it has not seen the rules are mostly noise (CV AUC
+0.618, much worse than the logit's 0.781). It is the same phenomenon as KNN with k = 1.</p>
+</details>
+<details class="question">
+<summary>3. Why does a tree not need <code>StandardScaler</code>, while KNN does?</summary>
+<p>KNN compares households by distance, and distance depends on units. A tree only asks "is this
+value above or below a cut?", and the answer is the same in years, months or standard deviations.
+One-hot encoding is still needed, because scikit-learn's trees only split numeric columns.</p>
+</details>
+<details class="question">
+<summary>4. Bagging scored 0.787 and the random forest 0.797. What does the forest do differently, and why does it help?</summary>
+<p>At each split, each tree of the forest may only look at a random subset of the variables. With
+bagging, every tree tends to start with the same strong question (hours of work), so the trees are
+similar and their errors are correlated. Averaging correlated errors cancels little. Forcing the
+trees to differ makes their errors less correlated, so the average cancels more noise.</p>
+</details>
+<details class="question">
+<summary>5. The ministry insists that every excluded household can be told why. What do you recommend, and what does it cost?</summary>
+<p>A shallow tree (depth 3–4), presented as a scorecard. On our test set the depth-4 tree costs
+1,560 against 1,421 for the random forest: about 140 more cost units, mainly poor households left
+out. One honest option is to use the forest to rank households and the tree to explain the rule,
+checking that the two rarely disagree, but that is a policy choice, not a statistical one. Put the
+numbers on the table.</p>
+</details>
+<h2 id="lab">🧪 Lab</h2>
+<p><a href="../../notebooks/s06_trees/">📓 Session 6 — Trees and Ensembles</a> ·
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s06_trees.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="admonition example">
+<p class="admonition-title">Assistant skill: refactor a script into functions</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Here is my notebook code that evaluates four classifiers (paste it).
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Refactor it into two functions: cost_threshold(p, y, fn_cost, fp_cost) and
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>evaluate(model, X_train, y_train, X_test, y_test, cv) -&gt; dict.
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Keep the results identical. The threshold must be chosen with out-of-fold predictions on the
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>training set only. Add a docstring to each function and change nothing else.
+</code></pre></div>
+Then run the old and the new code and compare the results table <strong>number by number</strong>. A refactor
+that changes a result is a bug, even if the new number looks better. A common one: the assistant
+"simplifies" by choosing the threshold on <code>X_test</code>.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Key takeaways</p>
+<ul>
+<li>A tree predicts with yes/no questions chosen to make groups as pure as possible (Gini). It needs
+  no scaling and finds interactions on its own.</li>
+<li>Unrestricted trees memorise (train AUC 1.000, CV 0.618). Limit depth or leaf size, and choose
+  the limit by CV.</li>
+<li>Averaging many different trees (bagging, random forests) cancels their noise. Boosting adds
+  small trees that correct each other.</li>
+<li>On our data the ensembles beat the logit by about 0.02 AUC and about 8% in policy cost: a real
+  but modest gain that costs explainability.</li>
+<li>Compare models on the same folds, with thresholds chosen out-of-fold, and read importance as
+  predictive, never causal.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">tree</span>   <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">forest</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">boost</span>  <span class="o">=</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">()</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">oof</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"predict_proba"</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">permutation_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">"roc_auc"</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<h2 id="before-session-7">✍️ Before Session 7</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Notebook exercises 1–3. Exercise 3, the scorecard, is good practice for your project memo.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Read ISLR, chapter 8 (sections 8.1 and 8.2). See the <a href="../../program/#7-readings">Program</a>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <strong>Checkpoint 1 is due Thursday 12 November, 23:59.</strong> It covers Sessions 1–5. Trees are welcome
+      as an extra model, but not required.</li>
+</ul>
+<h2 id="next-session">📚 Next session</h2>
+<p><a href="../class7/">Session 7</a> (Friday 13 November): every question on a proxy-means form costs money to ask and is one
+more thing a household can misreport. <strong>Which variables do we really need?</strong> Selection and shrinkage:
+LASSO, Ridge and Elastic Net.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../class5/" class="md-footer__link md-footer__link--prev" aria-label="Previous: S5 · 30 Oct · Classification">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                S5 · 30 Oct · Classification
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../class7/" class="md-footer__link md-footer__link--next" aria-label="Next: S7 · 13 Nov · Selection and Shrinkage">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                S7 · 13 Nov · Selection and Shrinkage
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hizocar" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.footer", "navigation.tabs", "content.code.annotate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+      
+        <script src="../../javascripts/ml-widgets.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s06.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s07.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s08.js"></script>
+      
+        <script src="../../javascripts/course-now.js"></script>
+      
+    
+  </body>
+</html>

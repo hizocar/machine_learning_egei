@@ -1,0 +1,1905 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Machine Learning with AI coding assistants — EGEI">
+      
+      
+        <meta name="author" content="Sebastian Azocar">
+      
+      
+        <link rel="canonical" href="https://hizocar.github.io/machine_learning_egei/classes/class5/">
+      
+      
+        <link rel="prev" href="../class4/">
+      
+      
+        <link rel="next" href="../class6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/usm_favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>S5 · 30 Oct · Classification - Machine Learning — EGEI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s06.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s07.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/ml-widgets-s08.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#session-5-classification-who-is-poor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Machine Learning — EGEI" class="md-header__button md-logo" aria-label="Machine Learning — EGEI" data-md-component="logo">
+      
+  <img src="../../images/usm_shield.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Machine Learning — EGEI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              S5 · 30 Oct · Classification
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../classes/" class="md-tabs__link">
+          
+  
+  
+  Classes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../projects/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../case/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  The Case
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../program/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Program
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../code-assistants/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Code Assistants
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Machine Learning — EGEI" class="md-nav__button md-logo" aria-label="Machine Learning — EGEI" data-md-component="logo">
+      
+  <img src="../../images/usm_shield.png" alt="logo">
+
+    </a>
+    Machine Learning — EGEI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Classes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All sessions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S1 · 11 Sep · Data and Decision Making
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S2 · 25 Sep · Data Manipulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S3 · 2 & 9 Oct · What Is ML?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S4 · 23 Oct · The ML Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S5 · 30 Oct · Classification
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S5 · 30 Oct · Classification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#todays-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Today's question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-already-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔁 What you already know
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✨ New today
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda-3-hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗓️ Agenda (3 hours)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-the-same-model-you-know-used-to-predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The same model you know, used to predict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-accuracy-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The accuracy trap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-threshold-is-a-policy-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The threshold is a policy decision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-all-the-information-inside-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. All the information, inside the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-the-leak-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The leak, again
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Common mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check your understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-launch-last-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project launch (last block)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-session-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✍️ Before Session 6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Next session
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S6 · 6 Nov · Trees and Ensembles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S7 · 13 Nov · Selection and Shrinkage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S8 · 20 Nov · Unlabeled Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S9 · 27 Nov · Final Presentations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../program/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Program
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Assistants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#todays-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Today's question
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-already-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔁 What you already know
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✨ New today
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agenda-3-hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗓️ Agenda (3 hours)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📖 Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-the-same-model-you-know-used-to-predict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The same model you know, used to predict
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-accuracy-trap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The accuracy trap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-threshold-is-a-policy-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The threshold is a policy decision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-all-the-information-inside-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. All the information, inside the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-the-leak-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The leak, again
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Common mistakes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Check your understanding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-launch-last-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project launch (last block)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-session-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✍️ Before Session 6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Next session
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="session-5-classification-who-is-poor">Session 5 · Classification: Who Is Poor?</h1>
+<div class="usm-session-meta">
+<span>Friday 30 October 2026</span>
+<span>13:00 – 16:00</span>
+<a class="usm-tag-gold" href="../../program/#5-course-contents" title="Block C of the course contents in the Program">Syllabus block C · Classification</a>
+<span class="usm-tag-red">Project released</span>
+</div>
+
+<div class="usm-actions usm-session-actions">
+<a class="usm-primary" href="../../notebooks/s05_classification/">Notebook</a>
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s05_classification.ipynb" target="_blank" rel="noopener">Open in Colab</a>
+<a href="#check-your-understanding">Check your understanding</a>
+</div>
+
+<div class="admonition warning">
+<p class="admonition-title">The course project is released today</p>
+<p>Brief, checkpoints and rubric are on the <a href="../../projects/">Project</a> page. <strong>Checkpoint 1</strong> is due
+on Thursday 12 November and covers everything up to today.</p>
+</div>
+<h2 id="todays-question">❓ Today's question</h2>
+<blockquote>
+<p>A social programme does not pay "a predicted income". It decides <strong>yes or no</strong>. Can we predict
+directly whether a household is poor, and which mistakes should we be more afraid of?</p>
+</blockquote>
+<h2 id="what-you-already-know">🔁 What you already know</h2>
+<p>From <a href="../class4/">Session 4</a>: split first, put preprocessing inside a <code>Pipeline</code>, choose with
+cross-validation, and suspect any feature you would not have at prediction time. From
+<strong>econometrics</strong>: the logit model.</p>
+<h2 id="new-today">✨ New today</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LogisticRegression</code></td>
+<td>The logit, now judged by how well it predicts unseen households</td>
+</tr>
+<tr>
+<td>Confusion matrix · precision · recall</td>
+<td>Separate the two kinds of mistake</td>
+</tr>
+<tr>
+<td>The <strong>decision threshold</strong></td>
+<td>Turn probabilities into decisions, according to the cost of each mistake</td>
+</tr>
+<tr>
+<td>ROC curve · AUC</td>
+<td>Judge the model across all thresholds</td>
+</tr>
+<tr>
+<td><code>stratify=</code> · <code>StratifiedKFold</code></td>
+<td>Keep the 23% of poor households in every split</td>
+</tr>
+<tr>
+<td><code>OneHotEncoder</code> · <code>SimpleImputer</code> · <code>ColumnTransformer</code></td>
+<td>Bring categorical variables and missing values <em>inside</em> the pipeline</td>
+</tr>
+<tr>
+<td><code>cross_val_predict</code></td>
+<td>Out-of-fold probabilities for choosing the threshold without the test set</td>
+</tr>
+</tbody>
+</table>
+<h2 id="agenda-3-hours">🗓️ Agenda (3 hours)</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13:00 – 13:15</td>
+<td>Recap: the leakage hunt, and why income cannot be a feature</td>
+</tr>
+<tr>
+<td>13:15 – 14:10</td>
+<td>Logistic regression as a predictor · the accuracy trap · confusion matrix</td>
+</tr>
+<tr>
+<td>14:10 – 14:25</td>
+<td>Break</td>
+</tr>
+<tr>
+<td>14:25 – 15:05</td>
+<td>The threshold as a policy decision · ROC and AUC</td>
+</tr>
+<tr>
+<td>15:05 – 15:35</td>
+<td><strong>Lab:</strong> categorical variables and missing values in the pipeline</td>
+</tr>
+<tr>
+<td>15:35 – 16:00</td>
+<td>Project launch: groups, question, data</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents">📖 Contents</h2>
+<h3 id="1-the-same-model-you-know-used-to-predict">1. The same model you know, used to predict</h3>
+<p>In econometrics you used the logit to estimate effects. The equation is identical:</p>
+<div class="arithmatex">\[P(\text{poor} \mid x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_p x_p)}}\]</div>
+<p>What changes is the question: not "is <span class="arithmatex">\(\beta_1\)</span> significant?" but "how well does this predict
+households the model has never seen?". Here is the logit with just one variable, years of schooling.
+Move the coefficients, then let maximum likelihood find them.</p>
+<div class="ml-widget" data-widget="sigmoid"></div>
+
+<div class="admonition example">
+<p class="admonition-title">Worked example by hand: from a score to a probability</p>
+<p>The fitted one-variable model is <span class="arithmatex">\(z = -0.352 - 0.086 \times \text{schooling}\)</span>, and
+<span class="arithmatex">\(p = 1/(1 + e^{-z})\)</span> (coefficients rounded to three decimals, so the notebook may differ in the
+third decimal).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Schooling</th>
+<th style="text-align: right;"><span class="arithmatex">\(z\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(e^{-z}\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(p = 1/(1+e^{-z})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">8 years</td>
+<td style="text-align: right;">−0.352 − 0.688 = −1.040</td>
+<td style="text-align: right;">2.829</td>
+<td style="text-align: right;">1 / 3.829 = <strong>0.261</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">12 years</td>
+<td style="text-align: right;">−0.352 − 1.032 = −1.384</td>
+<td style="text-align: right;">3.991</td>
+<td style="text-align: right;">1 / 4.991 = <strong>0.200</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">16 years</td>
+<td style="text-align: right;">−0.352 − 1.376 = −1.728</td>
+<td style="text-align: right;">5.629</td>
+<td style="text-align: right;">1 / 6.629 = <strong>0.151</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Each extra year multiplies the <strong>odds</strong> of being poor by <span class="arithmatex">\(e^{-0.086} = 0.918\)</span>, so four more
+years multiply them by 0.709. Notice that <strong>no household gets a probability above 0.5</strong> in this
+model. With a 0.5 threshold, schooling alone would never select anyone.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">From econometrics to ML</p>
+<ul>
+<li><strong>Same model, different scorecard.</strong> In econometrics you ask whether <span class="arithmatex">\(\beta_1\)</span> is significantly
+  different from zero. Here you ask how well the model ranks and classifies unseen households.</li>
+<li><strong>Significant ≠ useful for prediction.</strong> With 15,000 rows almost any variable is significant,
+  even when adding it does not move the test AUC. The reverse also happens.</li>
+<li><strong>Pseudo-R² ↔ AUC and the confusion matrix.</strong> They summarise different things: fit of the
+  likelihood vs. ability to separate classes at the thresholds you would actually use.</li>
+<li><strong>Odds ratios are associations.</strong> In a predictive model the coefficients absorb everything
+  correlated with them. Do not read them as causal effects of schooling or region.</li>
+</ul>
+</div>
+<h3 id="2-the-accuracy-trap">2. The accuracy trap</h3>
+<p>About <strong>23%</strong> of households are poor, so a "model" that says <em>nobody is poor</em> is already
+<strong>76.9% accurate</strong>. Our logistic regression with all observable variables reaches <strong>79.7%</strong>. That
+looks like a small win, and it hides a disaster:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">predicted not poor</th>
+<th style="text-align: right;">predicted poor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>actually not poor</strong></td>
+<td style="text-align: right;">2,754</td>
+<td style="text-align: right;">130</td>
+</tr>
+<tr>
+<td><strong>actually poor</strong></td>
+<td style="text-align: right;"><strong>633</strong></td>
+<td style="text-align: right;">233</td>
+</tr>
+</tbody>
+</table>
+<p>At the default threshold of 0.5 the model <strong>misses almost three out of four poor households</strong>
+(recall = 0.27).</p>
+<ul>
+<li><strong>Recall:</strong> of the poor households, the share we reach. TP / (TP + FN)</li>
+<li><strong>Precision:</strong> of the households we select, the share that are actually poor. TP / (TP + FP)</li>
+</ul>
+<h3 id="3-the-threshold-is-a-policy-decision">3. The threshold is a policy decision</h3>
+<p><code>.predict()</code> says "poor" when the probability is above 0.5, but nothing makes 0.5 right. Lower it and
+the programme reaches more poor households (recall ↑) while subsidising more households that are
+not poor (precision ↓). How much each mistake <em>costs</em> is not a statistical question. It belongs to
+whoever runs the programme. Your job is to make the trade-off visible.</p>
+<div class="ml-widget" data-widget="threshold"></div>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Threshold</th>
+<th style="text-align: right;">Poor reached</th>
+<th style="text-align: right;">Poor missed</th>
+<th style="text-align: right;">Non-poor subsidised</th>
+<th style="text-align: right;">Recall</th>
+<th style="text-align: right;">Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">233</td>
+<td style="text-align: right;">633</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.64</td>
+</tr>
+<tr>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">528</td>
+<td style="text-align: right;">338</td>
+<td style="text-align: right;">538</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.50</td>
+</tr>
+<tr>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">684</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">1,016</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">0.40</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Worked example by hand: what does each threshold cost?</p>
+<p>Say that excluding a poor household costs <strong>3</strong> units and subsidising a non-poor household costs
+<strong>1</strong>. Using the table above:</p>
+<ul>
+<li>Threshold 0.50: 3 × 633 + 1 × 130 = <strong>2,029</strong></li>
+<li>Threshold 0.20: 3 × 182 + 1 × 1,016 = <strong>1,562</strong></li>
+</ul>
+<p>Lowering the threshold to 0.20 roughly multiplies the false positives by eight, and the total
+cost still falls by almost a quarter, because each missed poor household weighs three times as much.
+The widget finds the cheapest threshold for any pair of costs (≈ 0.24 for 3:1, total 1,482).</p>
+</div>
+<p>The <strong>ROC curve</strong> shows every threshold at once, and the <strong>AUC</strong> summarises it: the probability that
+a random poor household gets a higher score than a random non-poor one. Ours is <strong>0.79</strong>, or
+0.78 ± 0.01 with stratified 5-fold cross-validation.</p>
+<h3 id="4-all-the-information-inside-the-pipeline">4. All the information, inside the pipeline</h3>
+<p>Most of what we know about a household is categorical, and some values are missing. What <em>missing</em>
+means decides the rule:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Why it is missing</th>
+<th>Rule inside the pipeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>head_weekly_hours</code></td>
+<td>the head does not work (6,105 cases)</td>
+<td>fill with <strong>0</strong>, not the median (which would invent a 45-hour week)</td>
+</tr>
+<tr>
+<td><code>head_weekly_hours</code></td>
+<td>an employed head did not know (87 cases)</td>
+<td>same column, <em>different</em> meaning: 0 is wrong here (notebook exercise 4)</td>
+</tr>
+<tr>
+<td><code>head_job_type</code></td>
+<td>the head does not work</td>
+<td>its own category, <code>"missing"</code></td>
+</tr>
+<tr>
+<td>schooling, insurance, overcrowding</td>
+<td>"doesn't know" (rare)</td>
+<td>median, or its own category</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">pre</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="p">(</span><span class="s2">"num"</span><span class="p">,</span>   <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"median"</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="n">NUM</span><span class="p">),</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="p">(</span><span class="s2">"hours"</span><span class="p">,</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"constant"</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="n">HOURS</span><span class="p">),</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="p">(</span><span class="s2">"cat"</span><span class="p">,</span>   <span class="n">make_pipeline</span><span class="p">(</span><span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"constant"</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">"missing"</span><span class="p">),</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                            <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">)),</span> <span class="n">CAT</span><span class="p">),</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">])</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"pre"</span><span class="p">,</span> <span class="n">pre</span><span class="p">),</span> <span class="p">(</span><span class="s2">"clf"</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">))])</span>
+</code></pre></div>
+<p>This is the Session 4 pipeline with more steps. Every <em>learned</em> value (medians, categories, scales)
+is still learned on training folds only.</p>
+<h3 id="5-the-leak-again">5. The leak, again</h3>
+<p>Add <code>income_per_capita</code> and the AUC jumps from 0.79 to <strong>0.965</strong>. Poverty is <em>defined</em> by comparing
+income per capita with a poverty line, so this model only rediscovers the definition, and needs the
+one variable a proxy means test exists to avoid.</p>
+<h3 id="6-common-mistakes">6. Common mistakes</h3>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Why it hurts</th>
+<th>How to avoid it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reporting accuracy on an imbalanced problem</td>
+<td>77% is achievable by selecting nobody</td>
+<td>Show the confusion matrix, recall and precision next to the baseline</td>
+</tr>
+<tr>
+<td>Leaving the threshold at 0.5</td>
+<td>0.5 encodes "both errors cost the same", a policy choice nobody made</td>
+<td>Choose the threshold from the costs of each error</td>
+</tr>
+<tr>
+<td>Choosing the threshold on the test set</td>
+<td>The test score becomes optimistic (Leak C again)</td>
+<td>Use cross-validated predictions on the training set</td>
+</tr>
+<tr>
+<td>Imputing "not applicable" values with the median</td>
+<td>Invents a 45-hour week for people who do not work</td>
+<td>Ask what <em>missing</em> means; use 0 or a "missing" category</td>
+</tr>
+<tr>
+<td>One-hot encoding before the split</td>
+<td>Categories seen only in test leak into training</td>
+<td>Encode inside the <code>ColumnTransformer</code> with <code>handle_unknown="ignore"</code></td>
+</tr>
+<tr>
+<td>Splitting without <code>stratify</code></td>
+<td>Train and test can end up with different shares of poor households</td>
+<td><code>train_test_split(..., stratify=y)</code> and <code>StratifiedKFold</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="check-your-understanding">✅ Check your understanding</h2>
+<details class="question">
+<summary>1. A model has 85% accuracy on a problem where 85% of cases are negative. Is it good?</summary>
+<p>You cannot tell from accuracy. "Predict negative for everyone" also scores 85%. Look at the
+confusion matrix: how many positives does it find (recall), and how many of its positives are
+right (precision)?</p>
+</details>
+<details class="question">
+<summary>2. From the matrix at 0.5 (TP = 233, FN = 633, FP = 130, TN = 2,754), compute recall and precision.</summary>
+<p>Recall = 233 / (233 + 633) = 233 / 866 = <strong>0.269</strong>: the model reaches about one poor household
+in four. Precision = 233 / (233 + 130) = 233 / 363 = <strong>0.642</strong>: of those it selects, about six
+in ten are poor.</p>
+</details>
+<details class="question">
+<summary>3. The ministry says: 'we prefer to subsidise some non-poor households rather than miss poor ones'. Do you raise or lower the threshold?</summary>
+<p><strong>Lower</strong> it. A lower threshold selects more households, so recall rises and precision falls.
+That is exactly the trade the ministry is willing to make. The cost ratio tells you how far to go.</p>
+</details>
+<details class="question">
+<summary>4. Our AUC is 0.79. Explain it to a policymaker in one sentence.</summary>
+<p>"If you pick one poor and one non-poor household at random, the model gives the poor one a
+higher score 79% of the time." (A coin would do it 50% of the time.)</p>
+</details>
+<details class="question">
+<summary>5. Adding income per capita raises the AUC to 0.965. Why should we still not use it?</summary>
+<p>Poverty is defined by comparing income per capita with a poverty line, so the model just
+rediscovers the definition. The point of a proxy means test is that income is <em>not</em> reliably
+observed when the decision is made. A feature you will not have at prediction time is a leak,
+however good it makes the score look.</p>
+</details>
+<h2 id="lab">🧪 Lab</h2>
+<p><a href="../../notebooks/s05_classification/">📓 Session 5 — Classification</a> ·
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s05_classification.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="admonition example">
+<p class="admonition-title">Assistant skill: choose the metric, don't accept the default</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>I have a logistic regression that predicts whether a household is poor (23% positive class).
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Here is my confusion matrix at threshold 0.5: (paste). Explain in plain language what each cell
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>means for a social programme. Then write code that picks the threshold minimising 3*FN + 1*FP on
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>cross-validated predictions (not on the test set). Tell me why that last condition matters.
+</code></pre></div>
+Check that it uses <code>cross_val_predict</code> (or equivalent) on the training set. An assistant that
+tunes the threshold on the test set has just reintroduced Leak C from Session 4.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Key takeaways</p>
+<ul>
+<li><strong>Accuracy can hide a disaster.</strong> Always compare with the majority-class baseline and look at
+  the confusion matrix.</li>
+<li><strong>Recall and precision answer different policy questions</strong>: whom do we reach, and whom do we
+  pay by mistake?</li>
+<li><strong>The threshold is a decision, not a default.</strong> It follows from the cost of each error. Choose
+  it with cross-validated predictions.</li>
+<li><strong>AUC judges the ranking across all thresholds.</strong> It is useful for comparing models, not for
+  choosing a cut-off.</li>
+<li><strong>What <em>missing</em> means decides how to fill it</strong>, and every learned step stays inside the pipeline.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"pre"</span><span class="p">,</span> <span class="n">pre</span><span class="p">),</span> <span class="p">(</span><span class="s2">"clf"</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">))])</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">p</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">StratifiedKFold</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                      <span class="n">method</span><span class="o">=</span><span class="s2">"predict_proba"</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">best_t</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">86</span><span class="p">),</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>             <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">((</span><span class="n">p</span> <span class="o">&lt;</span> <span class="n">t</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="p">((</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># best_t ≈ 0.26, chosen without ever looking at the test set</span>
+</code></pre></div>
+</div>
+<h2 id="project-launch-last-block">Project launch (last block)</h2>
+<p>Before you leave, your group must have:</p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> A question written in one sentence: who makes which decision with your prediction?</li>
+<li class="task-list-item"><input type="checkbox" disabled/> A dataset identified (your own, or CASEN with a target other than poverty or income).</li>
+<li class="task-list-item"><input type="checkbox" disabled/> The target named, and a check that no feature is computed from it.</li>
+</ul>
+<h2 id="before-session-6">✍️ Before Session 6</h2>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Notebook exercises 1–4.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Read ISLR, sections 4.1–4.3. See the <a href="../../program/#7-readings">Program</a>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Start Checkpoint 1 of the <a href="../../projects/">project</a>.</li>
+</ul>
+<h2 id="next-session">📚 Next session</h2>
+<p><a href="../class6/">Session 6</a> (Friday 6 November): <strong>trees and ensembles</strong>. Can a more flexible model find poor
+households that the logit misses, and what do we give up in exchange?</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../class4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: S4 · 23 Oct · The ML Pipeline">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                S4 · 23 Oct · The ML Pipeline
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../class6/" class="md-footer__link md-footer__link--next" aria-label="Next: S6 · 6 Nov · Trees and Ensembles">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                S6 · 6 Nov · Trees and Ensembles
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hizocar" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.footer", "navigation.tabs", "content.code.annotate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+      
+        <script src="../../javascripts/ml-widgets.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s06.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s07.js"></script>
+      
+        <script src="../../javascripts/ml-widgets-s08.js"></script>
+      
+        <script src="../../javascripts/course-now.js"></script>
+      
+    
+  </body>
+</html>
