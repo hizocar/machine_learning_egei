@@ -1,17 +1,26 @@
-# Class 1 · Data and Decision Making + Your Coding Setup
+# Session 1 · Data and Decision Making + Your Coding Setup
 
 <div class="usm-session-meta">
-<span>📅 Friday 11 September 2026</span>
-<span>⏱️ 13:00 – 16:00</span>
-<span class="usm-tag-gold">Block A · Data</span>
-<span>✅ Already taught</span>
+<span>Friday 11 September 2026</span>
+<span>13:00 – 16:00</span>
+<a class="usm-tag-gold" href="../../program/#5-course-contents" title="Block A of the course contents in the Program">Syllabus block A · Data</a>
+<span>Already taught</span>
+</div>
+
+<div class="usm-actions usm-session-actions">
+<a class="usm-primary" href="../../notebooks/s01_types_of_data/">Notebook</a>
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s01_types_of_data.ipynb" target="_blank" rel="noopener">Open in Colab</a>
 </div>
 
 !!! success "Session recap"
-    This page documents what we covered in the first session, so you can review it before Class 2.
-    If you missed it, work through the notebook and the setup steps below — Class 2 assumes both.
+    This page documents what we covered in the first session, so you can review it before Session 2.
+    If you missed it, work through the notebook and the setup steps below — Session 2 assumes both.
 
-## 🎯 Objectives
+## ❓ Today's question
+
+> What kind of data do we have about a household, and what does each type let us do?
+
+## Objectives
 
 - Distinguish the types of data you will meet in business problems, and what each type allows you to model.
 - Recognise how the data type constrains the method (and the metric) you can use later.
@@ -69,17 +78,22 @@ flowchart LR
     D -->|Holds up| E["Keep it,<br/>and note what you changed"]
 ```
 
-## 📓 Notebook
+## Notebook
 
-[📓 Class 1 — Types of Data](../notebooks/class1.ipynb) ·
-[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/class1.ipynb)
+[📓 Session 1 — Types of Data](../notebooks/s01_types_of_data.ipynb) ·
+[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s01_types_of_data.ipynb)
 
-## ✍️ Before Class 2
+## ✍️ Before Session 2
 
-- [ ] Make sure your environment runs the Class 1 notebook end to end.
+- [ ] Make sure your environment runs the Session 1 notebook end to end.
 - [ ] Have your assistant working **inside the editor**, not only in a browser tab.
 - [ ] Complete [Homework 1 — Python basics](../homeworks/Python_Basics_Homework.ipynb)
       ([Colab](https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/homeworks/Python_Basics_Homework.ipynb)).
       Do it yourself first, then ask the assistant to review it.
 - [ ] Read the [Code Assistants](../code-assistants.md) page — the verification checklist is used in
       every session from now on.
+
+## 📚 Next session
+
+[Session 2](class2.md) (Friday 25 September): from a raw survey export to one clean row per
+household, with pandas and your assistant.

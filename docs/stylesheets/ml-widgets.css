@@ -1,0 +1,382 @@
+/* ==========================================================================
+   Interactive widgets (ml-widgets.js)
+   SVG colours come from these variables, so light and dark mode work with no
+   extra logic in JavaScript. Palette: extra.css (USM navy, blue, gold, red).
+   ========================================================================== */
+.ml-widget {
+  --ml-ink: var(--md-default-fg-color);
+  --ml-muted: var(--md-default-fg-color--light);
+  --ml-grid: var(--md-default-fg-color--lightest);
+  --ml-c1: #005f96;          /* train / not poor */
+  --ml-c2: #c28000;          /* test / highlight (gold, darkened for contrast on white) */
+  --ml-c3: #b30828;          /* poor / leak / warning */
+  --ml-ok: #2e7d4f;
+  --ml-soft: #f5f8fc;
+  border: 1px solid var(--usm-line, var(--md-default-fg-color--lightest));
+  border-radius: 10px;
+  box-shadow: 0 10px 24px -20px rgba(16, 25, 59, 0.5);
+  padding: 1rem 1.2rem 1.1rem;
+  margin: 1.5rem 0;
+  background: var(--md-default-bg-color);
+  overflow: hidden;
+}
+
+[data-md-color-scheme="slate"] .ml-widget {
+  --ml-c1: #3d9bd6;
+  --ml-c2: #f2c334;
+  --ml-c3: #e15268;
+  --ml-ok: #5cc28a;
+  --ml-soft: #161c38;
+}
+
+.ml-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--usm-navy);
+  margin-bottom: 0.2rem;
+}
+
+[data-md-color-scheme="slate"] .ml-title { color: #eef1fb; }
+
+.ml-chip {
+  background: var(--usm-gold);
+  color: var(--usm-navy-dark);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+}
+
+.ml-sub {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  margin: 0 0 0.8rem;
+}
+
+/* Layout ------------------------------------------------------------------ */
+.ml-grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 0.8rem 1.2rem;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .ml-grid-2 { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Controls ---------------------------------------------------------------- */
+.ml-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.6rem 1.2rem;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.ml-control label {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.ml-control label output {
+  font-variant-numeric: tabular-nums;
+  color: var(--ml-c1);
+}
+
+.ml-control input[type="range"] {
+  width: 100%;
+  accent-color: var(--ml-c1);
+}
+
+.ml-control select {
+  width: 100%;
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+
+.ml-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.2rem 0 0.8rem;
+}
+
+.ml-btn {
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 100ms ease;
+}
+
+.ml-btn:hover { border-color: var(--ml-c1); }
+.ml-btn:active { transform: scale(0.97); }
+.ml-btn.is-primary { background: var(--ml-c1); border-color: var(--ml-c1); color: #fff; }
+[data-md-color-scheme="slate"] .ml-btn.is-primary { color: #0c1330; }
+.ml-btn.is-warn { border-color: var(--ml-c3); color: var(--ml-c3); }
+
+.ml-btn:focus-visible,
+.ml-chip-toggle:focus-visible,
+.ml-control input:focus-visible,
+.ml-control select:focus-visible {
+  outline: 2px solid var(--usm-navy);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--usm-gold) 55%, transparent);
+}
+
+[data-md-color-scheme="slate"] .ml-btn:focus-visible,
+[data-md-color-scheme="slate"] .ml-chip-toggle:focus-visible,
+[data-md-color-scheme="slate"] .ml-control input:focus-visible,
+[data-md-color-scheme="slate"] .ml-control select:focus-visible {
+  outline-color: var(--usm-gold);
+  box-shadow: none;
+}
+
+/* Feature chips (leak hunt) */
+.ml-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.2rem 0 0.6rem;
+}
+
+.ml-chip-toggle {
+  font-family: var(--md-code-font-family, monospace);
+  font-size: 0.72rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1.5px dashed var(--md-default-fg-color--lighter);
+  background: transparent;
+  color: var(--ml-muted);
+  cursor: pointer;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.ml-chip-toggle::before { content: "＋ "; }
+.ml-chip-toggle[aria-pressed="true"] {
+  border-style: solid;
+  border-color: var(--ml-c1);
+  background: var(--ml-c1);
+  color: #fff;
+}
+.ml-chip-toggle[aria-pressed="true"]::before { content: "✓ "; }
+.ml-chip-toggle.is-danger[aria-pressed="true"] { border-color: var(--ml-c3); background: var(--ml-c3); }
+.ml-chip-toggle:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Readouts ---------------------------------------------------------------- */
+.ml-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.5rem;
+  margin: 0.4rem 0 0.6rem;
+}
+
+.ml-stat {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+  background: var(--ml-soft);
+}
+
+.ml-stat span {
+  display: block;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ml-muted);
+}
+
+.ml-stat strong {
+  font-size: 1.02rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ml-stat.is-train strong { color: var(--ml-c1); }
+.ml-stat.is-test strong { color: var(--ml-c2); }
+
+[data-md-color-scheme="default"] .ml-stat.is-test strong { color: #9a6500; }
+
+.ml-note {
+  font-size: 0.78rem;
+  margin: 0.3rem 0 0;
+  min-height: 1.2em;
+}
+
+.ml-note.is-warn,
+.ml-note.is-ok {
+  border-left: 3px solid var(--ml-c3);
+  padding: 0.4rem 0.7rem;
+  background: var(--ml-soft);
+  border-radius: 0 6px 6px 0;
+}
+
+.ml-note.is-ok { border-left-color: var(--ml-ok); }
+
+.ml-honest {
+  margin: 0.5rem 0 0;
+  font-size: 0.74rem;
+  opacity: 0.9;
+}
+
+.ml-alert {
+  border: 1px solid var(--ml-c3);
+  border-left-width: 4px;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.78rem;
+  margin: 0.3rem 0;
+  background: var(--ml-soft);
+}
+
+.ml-alert strong { color: var(--ml-c3); }
+
+/* Confusion matrix ---------------------------------------------------------- */
+.ml-matrix {
+  display: grid;
+  grid-template-columns: minmax(70px, 0.8fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.35rem;
+  margin: 0.4rem 0 0.6rem;
+  max-width: 520px;
+}
+
+.ml-mh {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ml-muted);
+  align-self: end;
+  text-align: center;
+}
+
+.ml-mh-row { align-self: center; text-align: right; }
+
+.ml-cell {
+  border-radius: 8px;
+  padding: 0.45rem 0.5rem;
+  text-align: center;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.ml-cell strong {
+  display: block;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ml-cell span { font-size: 0.66rem; color: var(--ml-ink); }
+.ml-cell.is-tp span, .ml-cell.is-tn span { color: color-mix(in srgb, var(--ml-ok) 45%, var(--ml-ink)); }
+.ml-cell.is-fn span { color: color-mix(in srgb, var(--ml-c3) 50%, var(--ml-ink)); }
+.ml-cell.is-fp span { color: color-mix(in srgb, var(--ml-c2) 45%, var(--ml-ink)); }
+.ml-cell.is-tp { background: color-mix(in srgb, var(--ml-ok) 16%, transparent); }
+.ml-cell.is-tn { background: color-mix(in srgb, var(--ml-ok) 8%, transparent); }
+.ml-cell.is-fn { background: color-mix(in srgb, var(--ml-c3) 18%, transparent); }
+.ml-cell.is-fp { background: color-mix(in srgb, var(--ml-c2) 18%, transparent); }
+
+.ml-cost {
+  border-top: 1px dashed var(--md-default-fg-color--lighter);
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+}
+
+.ml-cost-title { font-size: 0.8rem; font-weight: 700; margin-bottom: 0.2rem; }
+
+/* SVG ----------------------------------------------------------------------- */
+.ml-plot {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  touch-action: pan-y;
+}
+
+.ml-plot .ax { stroke: var(--ml-muted); stroke-width: 1; }
+.ml-plot .grid { stroke: var(--ml-grid); stroke-width: 1; }
+.ml-plot text { fill: var(--ml-ink); font-size: calc(11px * var(--ml-k, 1)); font-family: inherit; }
+.ml-plot text.muted { fill: var(--ml-muted); }
+.ml-plot .ml-svg-label { font-weight: 700; font-size: calc(12px * var(--ml-k, 1)); }
+.ml-plot .ml-svg-small { font-size: calc(10px * var(--ml-k, 1)); }
+.ml-plot .ml-svg-big { font-size: calc(18px * min(var(--ml-k, 1), 1.3)); font-weight: 700; }
+.ml-plot .ml-mono { font-family: var(--md-code-font-family, monospace); font-size: calc(11px * var(--ml-k, 1)); }
+.ml-plot .ml-warn-text { fill: var(--ml-c3); font-weight: 700; }
+.ml-plot .ml-legend text { font-size: calc(10.5px * var(--ml-k, 1)); }
+.ml-plot.is-compact .ml-ytitle { display: none; }
+
+.ml-dot-train { fill: var(--ml-c1); opacity: 0.55; }
+.ml-dot-test { fill: none; stroke: var(--ml-c2); stroke-width: 1.6; }
+.ml-dot-pos { fill: var(--ml-c3); opacity: 0.6; }
+.ml-dot-neg { fill: var(--ml-c1); opacity: 0.45; }
+
+.ml-line-model { fill: none; stroke: var(--ml-ink); stroke-width: 2.6; stroke-linejoin: round; }
+.ml-line-train { fill: none; stroke: var(--ml-c1); stroke-width: 1.8; }
+.ml-line-test { fill: none; stroke: var(--ml-c2); stroke-width: 2.2; }
+.ml-line-z { fill: none; stroke: var(--ml-muted); stroke-width: 1.4; stroke-dasharray: 4 4; }
+.ml-plot .ml-lab-train { fill: var(--ml-c1); font-size: calc(10px * var(--ml-k, 1)); font-weight: 700; }
+.ml-plot .ml-lab-test { fill: var(--ml-c2); font-size: calc(10px * var(--ml-k, 1)); font-weight: 700; }
+.ml-plot .ml-lab-z { fill: var(--ml-muted); }
+
+.ml-marker { stroke: var(--ml-ink); stroke-width: 1; stroke-dasharray: 3 3; }
+.ml-marker-dot { fill: var(--usm-gold); stroke: var(--ml-ink); stroke-width: 1.5; }
+.ml-baseline { stroke: var(--ml-muted); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.ml-mean-line { stroke: var(--ml-c2); stroke-width: 2; }
+.ml-diag { stroke: var(--ml-grid); stroke-width: 1.2; stroke-dasharray: 4 4; }
+
+/* split-first */
+.ml-box { fill: transparent; stroke: var(--ml-c1); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.ml-box-test { stroke: var(--ml-c2); }
+.ml-scaler { fill: var(--ml-soft); stroke: var(--ml-ink); stroke-width: 1.5; }
+.ml-row { fill: var(--ml-c1); opacity: 0.85; }
+.ml-row.is-test { fill: var(--ml-c2); }
+.ml-row.is-early { stroke: var(--ml-c3); stroke-width: 2; }
+.ml-row-ghost { fill: var(--ml-c1); opacity: 0.8; }
+.ml-row-ghost.is-test { fill: var(--ml-c3); opacity: 1; }
+
+/* kfold */
+.ml-fold { fill: var(--ml-soft); stroke: var(--md-default-fg-color--lighter); stroke-width: 1; transform-box: fill-box; transform-origin: center; }
+.ml-fold.is-train { fill: color-mix(in srgb, var(--ml-c1) 22%, transparent); stroke: var(--ml-c1); }
+.ml-fold.is-val { fill: color-mix(in srgb, var(--ml-c2) 35%, transparent); stroke: var(--ml-c2); stroke-width: 2; }
+.ml-plot .ml-fold-label { font-size: calc(10.5px * var(--ml-k, 1)); font-weight: 600; pointer-events: none; }
+.ml-bar { fill: var(--ml-c1); }
+
+/* leak-hunt */
+.ml-track { fill: var(--ml-soft); stroke: var(--md-default-fg-color--lightest); }
+.ml-fill { fill: var(--ml-c1); }
+.ml-fill.is-danger { fill: var(--ml-c3); }
+.ml-fill.is-muted { fill: var(--ml-muted); }
+.ml-plot .ml-bar-value { fill: #fff; font-weight: 700; font-size: calc(12px * var(--ml-k, 1)); }
+
+/* threshold */
+.ml-hist-neg { fill: var(--ml-c1); opacity: 0.35; stroke: var(--ml-c1); stroke-width: 1; }
+.ml-hist-pos { fill: var(--ml-c3); opacity: 0.45; stroke: var(--ml-c3); stroke-width: 1; }
+.ml-shade { fill: var(--ml-grid); opacity: 0.5; }
+.ml-threshold { stroke: var(--ml-ink); stroke-width: 2; }
+.ml-threshold-handle { fill: var(--usm-gold); stroke: var(--ml-ink); stroke-width: 1.5; cursor: ew-resize; }
+/* Invisible, larger touch area around small draggable or clickable SVG marks. */
+.ml-hit { fill: transparent; stroke: none; cursor: ew-resize; }
+.ml-cheap { stroke: var(--ml-ok); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.ml-plot .ml-lab-cheap { fill: var(--ml-ok); font-weight: 700; }
+
+@media (max-width: 480px) {
+  .ml-widget { padding: 0.8rem 0.75rem 0.9rem; }
+}

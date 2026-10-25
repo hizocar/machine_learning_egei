@@ -1,13 +1,22 @@
-# Class 3 · What Is Machine Learning?
+# Session 3 · What Is Machine Learning?
 
 <div class="usm-session-meta">
-<span>📅 Friday 2 October 2026</span>
-<span>⏱️ 13:00 – 16:00</span>
-<span class="usm-tag-gold">Block B · Machine Learning Models</span>
-<span class="usm-tag-red">🤖 Assistant skill: ask it to teach, not only to code</span>
+<span>Fridays 2 and 9 October 2026</span>
+<span>13:00 – 16:00</span>
+<a class="usm-tag-gold" href="../../program/#5-course-contents" title="Block B of the course contents in the Program">Syllabus block B · Machine Learning Models</a>
+<span class="usm-tag-skill">Assistant skill: ask it to teach, not only to code</span>
 </div>
 
-## 🎯 Objectives
+<div class="usm-actions usm-session-actions">
+<a class="usm-primary" href="../../notebooks/s03_ml_models/">Notebook</a>
+<a href="https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s03_ml_models.ipynb" target="_blank" rel="noopener">Open in Colab</a>
+</div>
+
+## ❓ Today's question
+
+> Can we predict income from what we observe, and how wrong are we?
+
+## Objectives
 
 - Explain what a model is, what "fitting" means, and what a cost function measures.
 - Fit your first models: **KNN** and **polynomial regression**.
@@ -19,7 +28,7 @@
 
 | Time | Block |
 |---|---|
-| 13:00 – 13:15 | Recap of Class 2 and Lab 1 |
+| 13:00 – 13:15 | Recap of Session 2 and Lab 1 |
 | 13:15 – 14:15 | What a model is · fitting · the cost function · KNN |
 | 14:15 – 14:30 | Break |
 | 14:30 – 15:20 | **Lab:** polynomial regression, from underfitting to overfitting |
@@ -63,12 +72,12 @@ touch every point, training error falls towards zero — and test error turns up
 ### 4. Training error vs. test error
 
 We split the data before fitting, and we report the test error. Today this is a simple hold-out
-split; in [Class 4](class4.md) we replace it with cross-validation and go hunting for the ways this
+split; in [Session 4](class4.md) we replace it with cross-validation and go hunting for the ways this
 discipline quietly breaks.
 
 ## 🧪 Lab: from underfitting to overfitting
 
-In the Class 3 notebook, fit polynomials of increasing degree to the same data and plot training and
+In the Session 3 notebook, fit polynomials of increasing degree to the same data and plot training and
 test error against the degree. Identify the degree at which test error stops improving.
 
 !!! example "Use the assistant as a tutor"
@@ -85,10 +94,10 @@ test error against the degree. Identify the degree at which test error stops imp
 **Verify before keeping:** was the split made *before* fitting? Is the same scaling applied to both
 sets? Is `random_state` fixed so the plot is reproducible?
 
-## 📓 Notebook
+## Notebook
 
-[📓 Class 3 — Machine Learning Models](../notebooks/class3.ipynb) ·
-[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/class3.ipynb)
+[📓 Session 3 — Machine Learning Models](../notebooks/s03_ml_models.ipynb) ·
+[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hizocar/machine_learning_egei/blob/main/docs/notebooks/s03_ml_models.ipynb)
 
 ## ✍️ Homework
 
@@ -97,5 +106,5 @@ sets? Is `random_state` fixed so the plot is reproducible?
 
 ## 📚 Next session
 
-[Class 4](class4.md) (Friday 9 October) turns today's single split into a proper **machine learning
-pipeline** with cross-validation — and **Project 1 is released**.
+[Session 4](class4.md) (Friday 23 October) asks whether the error we report is honest: scaling, the
+`Pipeline`, cross-validation and data leakage, all on [the course case](../case.md).

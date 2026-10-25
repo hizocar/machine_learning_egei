@@ -1,0 +1,144 @@
+/* Session 6 widget styles (extends ml-widgets.css). */
+
+/* tree-split: the two child groups */
+.ml6-children {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.45rem;
+  margin: 0.5rem 0 0.4rem;
+}
+
+.ml6-child {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.74rem;
+  transition: background-color 250ms ease;
+}
+
+.ml6-child-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.ml6-child-title strong { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.ml6-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  overflow: hidden;
+  margin-bottom: 0.2rem;
+}
+
+.ml6-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--ml-c3);
+}
+
+/* tree-depth: outline of the fitted tree */
+.ml6-tree {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0.8rem 0 0.3rem;
+}
+
+.ml6-node {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.6rem;
+  margin-left: calc(var(--depth) * 1.4rem);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  font-size: 0.74rem;
+}
+
+@media (max-width: 480px) {
+  .ml6-node { margin-left: calc(var(--depth) * 0.7rem); }
+}
+
+.ml6-branch {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  /* Solid chip so its label is read against the page colour, not the node's risk tint. */
+  background: var(--md-default-bg-color);
+}
+
+.ml6-branch-yes { color: var(--ml-ok); border-color: var(--ml-ok); }
+.ml6-branch-no { color: var(--ml-c3); border-color: var(--ml-c3); }
+.ml6-root { color: var(--ml-ink); }
+.ml6-stat { font-variant-numeric: tabular-nums; }
+.ml6-q { font-family: var(--md-code-font-family, monospace); font-size: 0.7rem; }
+.ml6-leaf { font-weight: 700; color: color-mix(in srgb, var(--ml-c3) 70%, var(--ml-ink)); font-size: 0.7rem; }
+.ml6-leaf.is-low { color: color-mix(in srgb, var(--ml-ok) 70%, var(--ml-ink)); }
+
+/* forest-vote / model-race toggles */
+.ml6-toggle[aria-pressed="true"] {
+  background: var(--ml-c1);
+  border-color: var(--ml-c1);
+  color: #fff;
+}
+
+[data-md-color-scheme="slate"] .ml6-toggle[aria-pressed="true"] {
+  color: #0c1330;
+}
+
+.ml6-desc { min-height: 2.4em; }
+
+.ml-plot .ml6-whisker { stroke: var(--ml-ink); stroke-width: 1.6; }
+
+.ml6-table-wrap { overflow-x: auto; }
+
+.ml6-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
+  margin: 0.3rem 0 0.2rem;
+}
+
+.ml6-table th,
+.ml6-table td {
+  padding: 0.25rem 0.5rem;
+  text-align: right;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.ml6-table th:first-child,
+.ml6-table td:first-child { text-align: left; }
+
+.ml6-table th {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ml-muted);
+}
+
+/* model-race legend: bar = CV mean, whisker = ± 1 sd, dot = test */
+.ml6-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  font-size: 0.72rem;
+  color: var(--ml-ink);
+  margin: 0.1rem 0 0.2rem;
+}
+
+.ml6-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.ml6-legend svg { width: 26px; height: 12px; overflow: visible; }
+.ml6-legend .ml6-whisker { stroke: var(--ml-ink); stroke-width: 1.6; }
+[data-md-color-scheme="slate"] .ml6-leaf { color: color-mix(in srgb, var(--ml-c3) 30%, var(--ml-ink)); }
+[data-md-color-scheme="slate"] .ml6-leaf.is-low { color: color-mix(in srgb, var(--ml-ok) 45%, var(--ml-ink)); }

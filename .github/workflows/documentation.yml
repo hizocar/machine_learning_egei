@@ -1,5 +1,8 @@
 name: GitHub Actions
-on: [push]
+# Publish only from main; work branches never deploy.
+on:
+  push:
+    branches: [main]
 jobs:
   Pages:
     runs-on: ubuntu-latest
