@@ -1,0 +1,139 @@
+/* Grades and Feedback page (feedback.md + javascripts/feedback-reveal.js) */
+
+.fb-reveal {
+  margin: 1rem 0 1.5rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--usm-line);
+  border-radius: 6px;
+  background: var(--md-default-bg-color);
+}
+
+.fb-form label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.35rem;
+}
+
+.fb-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.fb-row input {
+  flex: 1 1 15rem;
+  min-width: 0;
+  padding: 0.55rem 0.7rem;
+  font: 600 0.85rem/1.2 var(--md-code-font-family, monospace);
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--usm-line);
+  border-radius: 4px;
+}
+
+.fb-row input:focus {
+  outline: 2px solid var(--usm-blue);
+  outline-offset: 1px;
+}
+
+.fb-row .usm-btn {
+  cursor: pointer;
+  border: 0;
+}
+
+.fb-row .usm-btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.fb-status {
+  min-height: 1.2em;
+  margin: 0.5rem 0 0 !important;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.fb-output h1 {
+  margin: 0.4rem 0 0.6rem;
+  font-size: 1.5rem;
+}
+
+.fb-output h1:focus {
+  outline: none;
+}
+
+.fb-score {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin: 0.3rem 0 0.8rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  background: var(--usm-tint-blue);
+}
+
+.fb-score-num {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--usm-navy);
+}
+
+[data-md-color-scheme="slate"] .fb-score-num {
+  color: #eef1fb;
+}
+
+.fb-score-den {
+  font-size: 0.9rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.fb-hide {
+  float: right;
+  margin-left: 1rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+  color: var(--usm-blue);
+  background: transparent;
+  border: 1px solid var(--usm-line);
+  border-radius: 4px;
+}
+
+.fb-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fb-table-wrap table {
+  margin: 0 0 1rem;
+}
+
+/* Score table: on narrow screens scroll sideways instead of wrapping into tall rows. */
+.fb-output table th:first-child,
+.fb-output table td:first-child {
+  min-width: 10rem;
+}
+
+.fb-output table th:nth-child(4),
+.fb-output table td:nth-child(4) {
+  min-width: 16rem;
+}
+
+.fb-output table td:nth-child(2),
+.fb-output table td:nth-child(3) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .fb-hide {
+    float: none;
+    display: block;
+    margin: 0 0 0.6rem auto;
+  }
+}

@@ -62,6 +62,7 @@ extra_css:
   - stylesheets/ml-widgets-s06.css
   - stylesheets/ml-widgets-s07.css
   - stylesheets/ml-widgets-s08.css
+  - stylesheets/feedback.css
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -72,6 +73,7 @@ extra_javascript:
   - javascripts/ml-widgets-s07.js
   - javascripts/ml-widgets-s08.js
   - javascripts/course-now.js
+  - javascripts/feedback-reveal.js
 
 extra:
   social:
@@ -104,6 +106,7 @@ nav:
       - "S8 · 20 Nov · Unlabeled Data": classes/class8.md
       - "S9 · 27 Nov · Final Presentations": classes/class9.md
   - Project: projects.md
+  - Feedback: feedback.md
   - The Case: case.md
   - Program: program.md
   - Glossary: glossary.md
