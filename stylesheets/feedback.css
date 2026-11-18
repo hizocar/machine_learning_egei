@@ -1,69 +1,81 @@
-/* Grades and Feedback page (feedback.md + javascripts/feedback-reveal.js) */
+/* Grades and Feedback page (feedback.md, generated from the private grading folder) */
 
-.fb-reveal {
-  margin: 1rem 0 1.5rem;
-  padding: 1.1rem 1.2rem;
+.md-typeset details.fb-card {
+  margin: 0.8rem 0;
   border: 1px solid var(--usm-line);
   border-radius: 6px;
   background: var(--md-default-bg-color);
+  box-shadow: none;
+  font-size: inherit;
 }
 
-.fb-form label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--md-default-fg-color--light);
-  margin-bottom: 0.35rem;
-}
-
-.fb-row {
+.md-typeset details.fb-card > summary {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  align-items: stretch;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  cursor: pointer;
+  list-style: none;
+  background: transparent;
 }
 
-.fb-row input {
-  flex: 1 1 15rem;
-  min-width: 0;
-  padding: 0.55rem 0.7rem;
-  font: 600 0.85rem/1.2 var(--md-code-font-family, monospace);
-  letter-spacing: 0.06em;
-  color: var(--md-default-fg-color);
-  background: var(--md-default-bg-color);
-  border: 1px solid var(--usm-line);
+.md-typeset details.fb-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Material draws its own disclosure arrow on summaries; the button replaces it. */
+.md-typeset details.fb-card > summary::before,
+.md-typeset details.fb-card > summary::after {
+  display: none;
+}
+
+.fb-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--usm-navy);
+}
+
+[data-md-color-scheme="slate"] .fb-name {
+  color: #eef1fb;
+}
+
+.fb-btn {
+  flex: none;
+  padding: 0.4rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--usm-blue);
   border-radius: 4px;
 }
 
-.fb-row input:focus {
+.md-typeset details.fb-card > summary:hover .fb-btn {
+  background: var(--usm-navy);
+}
+
+.md-typeset details.fb-card > summary:focus-visible {
   outline: 2px solid var(--usm-blue);
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
 
-.fb-row .usm-btn {
-  cursor: pointer;
-  border: 0;
+.md-typeset details.fb-card[open] > summary {
+  border-bottom: 1px solid var(--usm-line);
 }
 
-.fb-row .usm-btn:disabled {
-  opacity: 0.6;
-  cursor: progress;
+.md-typeset details.fb-card[open] .fb-btn {
+  color: var(--usm-blue);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--usm-line);
 }
 
-.fb-status {
-  min-height: 1.2em;
-  margin: 0.5rem 0 0 !important;
-  font-size: 0.75rem;
-  color: var(--md-default-fg-color--light);
+.md-typeset details.fb-card[open] .fb-btn::after {
+  content: " · Hide";
 }
 
-.fb-output h1 {
-  margin: 0.4rem 0 0.6rem;
-  font-size: 1.5rem;
-}
-
-.fb-output h1:focus {
-  outline: none;
+.md-typeset details.fb-card > :not(summary) {
+  margin-left: 1.1rem;
+  margin-right: 1.1rem;
 }
 
 .fb-score {
@@ -92,48 +104,19 @@
   color: var(--md-default-fg-color--light);
 }
 
-.fb-hide {
-  float: right;
-  margin-left: 1rem;
-  padding: 0.3rem 0.7rem;
-  font-size: 0.7rem;
-  cursor: pointer;
-  color: var(--usm-blue);
-  background: transparent;
-  border: 1px solid var(--usm-line);
-  border-radius: 4px;
-}
-
-.fb-table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.fb-table-wrap table {
-  margin: 0 0 1rem;
-}
-
 /* Score table: on narrow screens scroll sideways instead of wrapping into tall rows. */
-.fb-output table th:first-child,
-.fb-output table td:first-child {
-  min-width: 10rem;
-}
-
-.fb-output table th:nth-child(4),
-.fb-output table td:nth-child(4) {
-  min-width: 16rem;
-}
-
-.fb-output table td:nth-child(2),
-.fb-output table td:nth-child(3) {
+.fb-card table td:nth-child(2),
+.fb-card table td:nth-child(3) {
   text-align: right;
   white-space: nowrap;
 }
 
-@media (max-width: 600px) {
-  .fb-hide {
-    float: none;
-    display: block;
-    margin: 0 0 0.6rem auto;
-  }
+.fb-card table th:first-child,
+.fb-card table td:first-child {
+  min-width: 10rem;
+}
+
+.fb-card table th:nth-child(4),
+.fb-card table td:nth-child(4) {
+  min-width: 16rem;
 }
