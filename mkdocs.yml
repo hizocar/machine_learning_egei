@@ -73,7 +73,6 @@ extra_javascript:
   - javascripts/ml-widgets-s07.js
   - javascripts/ml-widgets-s08.js
   - javascripts/course-now.js
-  - javascripts/feedback-reveal.js
 
 extra:
   social:
