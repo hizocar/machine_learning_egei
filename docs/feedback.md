@@ -11,6 +11,296 @@ one. Find your name and press <strong>Reveal</strong>.</p>
 </div>
 </div>
 
+## Final delivery · pre-feedback
+
+Feedback on the drafts sent before the final deadline (**Thursday 26 November, 23:59**). It is not
+a grade. Each review is ordered by impact: start with **Fix before you submit**, then **Improve if
+time allows**. It maps to the [final delivery
+rubric](projects.md#final-delivery-compare-decide-defend).
+
+<details class="fb-card" markdown>
+<summary><span class="fb-name">Pamina</span><span class="fb-btn">Reveal</span></summary>
+
+**Project:** Targeting alcohol-prevention outreach in Germany (ESS Round 11) under a fixed budget of
+100 contacts.
+
+This is feedback on your draft, not a grade. It is ordered by what moves your final grade most, and
+it is sized for the time left before the deadline (Thu 26 Nov, 23:59). *Cell numbers count from the
+top of your notebook, starting at 1.*
+
+#### Big picture
+
+You responded to the Checkpoint 1 feedback thoroughly, and the change log (cell 56) shows it.
+
+- The decision rule is now coherent: a fixed budget, ranking, then precision@100 and recall@100.
+- Random targeting is the honest baseline.
+- The demographic-only model directly tests whether more data is worth collecting.
+- Every comparison now runs on out-of-fold predictions with one shared `cv` object.
+- The test set is used once, and you state the Checkpoint 1 caveat.
+
+That is the right skeleton. What is left is mostly about **how much your differences can be
+trusted** and **turning the result into a recommendation with numbers**.
+
+| Final rubric criterion | Where you stand | Main gap |
+|---|---|---|
+| Response to feedback and final pipeline (15) | Strong | — |
+| Breadth and correctness of methods (25) | Good | Random forest not tuned; LASSO only at one C |
+| Honest comparison and model choice (20) | Needs work | KNN chosen on a 2-hit difference you yourself call noise |
+| Recommendation, quantified, limitations (20) | Needs work | "440 per 1,000" extrapolation is not valid as stated; no cost or benefit figure |
+| Presentation and defence (20) | — | See the last section |
+
+#### Fix before you submit
+
+##### 1. Your model choice contradicts your own reading of the results
+
+Cell 51 says the differences between models are "almost negligible and may reflect sampling
+variation", and then picks KNN because it found 44 hits against LASSO's 43 and the logit's 42.
+Both statements cannot be true at once. A quick sense of the noise: with 100 contacts and a hit
+rate around 42%, the standard error is √(0.42 × 0.58 / 100) ≈ 0.05. That is **about ±10 hits** for
+a 95% interval. A 2-hit gap is well inside it.
+
+**What to do:**
+
+- **Show the noise.** Compute precision@k inside each fold (the top 20 of each of the 5 folds)
+    and report the mean and standard deviation per model. Alternatively, bootstrap the
+    out-of-fold predictions about 1,000 times. Either way, put an interval next to each number in
+    the comparison table (cell 49).
+- **Then choose on the tie-breakers that matter to a ministry:** interpretability, the data it
+    needs and stability. That points to the **logistic regression**, or even the
+    **demographic-only model**, not KNN. KNN also has the *lowest* AUC of the full models (0.598)
+    and cannot explain why someone was selected. That is awkward for a programme that must avoid
+    stigma, a point you raise yourself in cell 54.
+- **Check KNN for ties.** With k = 200, KNN probabilities can only take values in steps of
+    1/200 = 0.005, so many people near the top-100 cut-off share the same score, and `argsort`
+    breaks those ties arbitrarily. Run `np.sort(p_knn)[-110:]` to see how many tied values sit
+    around position 100. If many are tied, the "44" partly depends on row order.
+- **Note the metric mismatch.** k was chosen by AUC (cell 33) but the model is judged by
+    precision@100. One sentence is enough; optionally, choose k by precision@100.
+
+##### 2. The "per 1,000 contacts" extrapolation (cell 54) needs its condition
+
+"KNN would identify approximately 440 frequent binge drinkers per 1,000 contacts" holds only if
+those 1,000 contacts are still the **top 5.5%** of the population, the same share as 100 out of
+1,802 in your training set. That would mean screening about 18,000 people. If the ministry
+contacts more people from the same population, precision falls, because you go further down the
+ranking. Your test evaluation already gets this right: 33 contacts out of 601 keeps the same 5.5%
+share (cell 53).
+
+**What to do:** state the budget as a share ("we contact the top 5.5% of screened adults"), and
+show precision at a few shares (5%, 10%, 20%) on the out-of-fold predictions. A small table or a
+curve of precision vs. share contacted is enough. That tells the ministry what happens if the
+budget grows.
+
+##### 3. Quantify the recommendation
+
+The final rubric asks for the *expected effect with explicit assumptions*. Right now the
+recommendation stops at "hits per 100 contacts". Add one back-of-the-envelope paragraph:
+
+> Per 1,000 contacts at the top 5.5%: N_model frequent binge drinkers reached vs. about 300 at
+> random → (N_model − 300) extra people reached. If outreach costs €X per person and prevention
+> avoids €Y of later costs per frequent drinker reached, with effectiveness e, the net gain is
+> (N_model − 300) × e × Y − 1,000 × X.
+
+Use explicit placeholders with a source for each one, even rough ones (your Sacks et al. reference
+can anchor Y). Then compare the full model with the demographic-only model in the same units.
+"Collecting six more variables buys about 50 extra people per 1,000" (cell 54) is the right
+question; give it a euro value, or the break-even cost of collecting those variables.
+
+#### Improve if time allows
+
+##### 4. Tune the random forest (cell 42)
+
+The forest uses fixed settings (`min_samples_leaf=5`, `n_estimators=300`). Session 6 tunes the
+tree-size parameters with cross-validation. A small `GridSearchCV` over
+`min_samples_leaf ∈ {5, 20, 50}` and `max_depth ∈ {None, 5, 10}` with your `cv` takes minutes and
+closes the "was the forest given a fair chance?" question. A forest with leaves of 5 on 1,800
+noisy survey rows is likely to overfit. Larger leaves will probably help.
+
+##### 5. Show the LASSO path, not only the CV optimum (cells 45–47)
+
+At the CV-best C = 1.0 the penalty is weak, so it is not surprising that every original variable
+survives. Your question was *can the ministry collect fewer variables?* To answer it, run the path
+as in Session 7: for C in `np.logspace(-3, 0, 8)`, record the CV precision@100 (or AUC) **and how
+many of the 8 original variables keep at least one non-zero coefficient**. Then you can say "with
+4 variables we keep X% of the performance", which links directly to your demographic-only
+comparison.
+
+##### 6. Give age a fair shape in the demographic-only model (cell 39)
+
+Age enters the logit as a straight line, but binge drinking is typically highest among young
+adults and falls with age. That pattern is not linear in the log-odds. Use age bands (for example
+18–29, 30–44, 45–64, 65+) or add age². If the demographic-only model improves, your conclusion
+"age and gender get you most of the way" gets stronger.
+
+##### 7. Interpret what drives the risk
+
+Use the LASSO or logistic coefficients (cell 46) for a short paragraph on who is flagged. For
+example: living on a farm or in the countryside raises the risk, being female lowers it, and so
+does being widowed. Say that these are associations, not causes. This answers the "interpret"
+part of the brief and helps you defend the targeting rule ethically.
+
+##### 8. Limitations: what would break in production
+
+Your limitations paragraph (cell 54) covers self-reporting and generalisation. Add:
+
+- the ministry does not hold survey answers, so which **administrative sources** would supply age,
+    gender, income and marital status;
+- the ESS fieldwork is from 2023–24 and behaviour shifts;
+- the **ethical constraint**: a model flagging people by gender, marital status or income for
+    "alcohol risk" needs a careful outreach design. You mention it; make it a concrete design rule.
+
+#### Small fixes
+
+- Remove the leftover notes in cells 22 and 29 ("Because of the pre in the cell above…"). They
+    refer to an earlier version of the notebook.
+- Cell 54: the sentence with parentheses "(precision@33) … (test set) … 44 (13)" is hard to read.
+    Split it into one sentence for the CV result and one for the test result.
+- "may be a reasonable alternatives" → "alternative".
+- Report the random baseline's recall@100 the same way in cell 24 and cell 49 (the two cells
+    compute it with different formulas, even though the values agree).
+
+#### Before you submit and present
+
+- **Deliverables:** the brief asks for the notebook **plus a report (max. 8 pages)**, the
+    assistant log and slides for the presentation on Friday. Your notebook already reads like a
+    report. Make sure the PDF report exists and tells the story without the code.
+- **Run Restart and run all** and check that every number quoted in the text matches a printed
+    output.
+- **Defence (20%):** be ready to explain without notes why precision@100 rather than AUC, why the
+    random baseline is about 30, what `cross_val_predict` returns, and why you did not choose the
+    model on the test set.
+
+</details>
+
+<details class="fb-card" markdown>
+<summary><span class="fb-name">Sofía</span><span class="fb-btn">Reveal</span></summary>
+
+**Project:** Which households should an ISAPRE call? Predicting ISAPRE vs. FONASA coverage with
+CASEN to attract clients of competing ISAPREs.
+
+This is feedback on your draft, not a grade. It is ordered by what moves your final grade most, and
+it is sized for the time left before the deadline (Thu 26 Nov, 23:59). *Cell numbers count from the
+top of your notebook, starting at 1.*
+
+#### Big picture
+
+This is a very strong draft, and it responds to every point of the Checkpoint 1 feedback.
+
+- The decision is now coherent (option a: poaching from competitors), with the value of a call
+    built from explicit figures.
+- The threshold comes from the costs and is checked against calibration and out-of-fold profit.
+- The sensitivity to the conversion rate is the right way to handle your weakest assumption.
+- Gradient boosting is compared fold by fold and correctly read as a tie.
+- LASSO answers a real business question (how short the form can be), and the location-only model
+    turns a leakage assumption into a measured result.
+- The test set is used once, with the caveat stated.
+
+What is left is mostly **interpretation, a few unsupported numbers, and polish**.
+
+| Final rubric criterion | Where you stand | Main gap |
+|---|---|---|
+| Response to feedback and final pipeline (15) | Strong | — |
+| Breadth and correctness of methods (25) | Strong | The short-form result is measured with the shrunk model, not refitted |
+| Honest comparison and model choice (20) | Strong | Model chosen in cell 31, before the comparison |
+| Recommendation, quantified, limitations (20) | Good | No interpretation of *who* gets called; sources for the money figures |
+| Presentation and defence (20) | — | See the last section |
+
+#### Fix before you submit
+
+##### 1. Interpret the final model: who gets called?
+
+The brief asks you to **interpret and recommend**. The notebook never shows what drives the
+prediction. Add a short table of the 10 largest logistic regression coefficients as **odds ratios**
+(`np.exp(coef_)`), with feature names from `get_feature_names_out()`, and one paragraph in plain
+words. Your LASSO path already hints at the answer:
+
+- years of schooling of the head;
+- living in an apartment rather than a house;
+- the Metropolitan Region;
+- weekly hours worked.
+
+Say that these are associations, not causes, and that because C = 100 the model is almost
+unregularised. If two encoded columns of the same variable carry opposite signs, explain why. This
+also prepares you for the "why did the model call this household?" question in the defence.
+
+##### 2. Every money figure needs a source (cell 1)
+
+Your profit chain multiplies four numbers, and each one changes the threshold:
+
+- **CLP 240,103 per month:** per household, or per contributor (cotizante)? Name the source, for
+    example the Superintendencia de Salud statistical bulletin, and its year.
+- **"About 11% remains after health care and sick-leave costs":** source, or call it an
+    assumption.
+- **23% market share "similar to the market leader":** source.
+- **CLP 2,000 per call:** you already flag it as your estimate. Good.
+
+Then add one sentence on the time horizon. You value a new client at **one year** of margin, which
+is conservative if clients stay several years. Say so, because it means your threshold is, if
+anything, too strict.
+
+##### 3. Move the model choice to after the comparison
+
+Cell 31 ends with "Logistic regression performs better … so we select it as our final model". That
+is *before* gradient boosting, LASSO and the comparison in cell 43, where the real choice is made.
+Delete that sentence, or turn it into "logistic regression beats KNN". A reader should see the
+decision once, after all the evidence.
+
+#### Improve if time allows
+
+##### 4. Refit the short form instead of reading the shrunk model (cells 36–38)
+
+The ROC AUC values in the LASSO path (0.83 for 2 variables, 0.881 for 13) are those of the
+**penalised** model. With a strong penalty the remaining coefficients are also shrunk toward zero,
+which understates what a short form can do. For the form-length question, use LASSO only to
+**select** the questions, then refit a plain logistic regression on the selected original
+variables, cross-validated on the same `cv`. The 13-question form will probably lose less than
+the 7% of profit you report (cell 44), which makes your "shorter form" option more attractive. The
+comparison table already has a row for it, so just replace it.
+
+##### 5. Express the profit on a scale a manager can use
+
+"CLP 6.78 million" on the out-of-fold training set and "CLP 1.73 million" on the test set describe
+lists of 11,433 and 2,859 households. That reads as if the model earned less on the test set. Put
+everything **per 1,000 households screened** (and per 1,000 calls, as you already do in cell 53).
+Then the out-of-fold and test numbers can be compared directly, and they are close, which
+supports your generalisation claim.
+
+##### 6. Survey weights in the evaluation
+
+You explain well why the real call list has more ISAPRE households (17.5% weighted vs. 10.8%).
+Two cheap upgrades:
+
+- Report the test profit **weighted** by `survey_weight`. Most metrics accept `sample_weight`, and
+    the profit can be computed as a weighted sum. This estimates profit on a population-like list.
+- In the limitations, name the standard fix for a different base rate: adjust the predicted odds
+    by the ratio of the prior odds (prior-shift correction), or recalibrate on a pilot.
+
+##### 7. Notebook structure
+
+- Use one heading level for sections. "LASSO" (cell 35) and "Model Comparisson" (cell 42) are `#`
+    while the others are `##`. Also fix the typo: *Comparison*.
+- Cell 43 redefines the cost parameters that cell 49 defines again. Define them once, near the
+    top, next to the introduction that explains them.
+- Two rows of the assistant log have an empty last column (LASSO and Recommendation). Fill them.
+    What did you check or change in the draft recommendation? Also fix "sugested".
+
+#### Before you submit and present
+
+- **Deliverables:** the brief asks for the notebook **plus a report (max. 8 pages)**, the
+    assistant log and slides for the presentation on Friday. Your recommendation section is
+    almost the report already. Make sure the PDF exists and reads without the code.
+- **Run Restart and run all** once more and check every quoted number against its output.
+- **Defence (20%):** your log is honest that an assistant reorganised the notebook and wrote parts
+    of the code (for example the `feature_mapping` loop in cell 36). Expect questions on exactly
+    those parts. Be ready to explain, without notes:
+    - why the threshold is call cost / V;
+    - what the calibration table shows;
+    - why gradient boosting is a tie and not a win;
+    - why LASSO drops `head_activity` but keeps `head_job_type`;
+    - why the test result is "slightly optimistic".
+
+</details>
+
 ## Checkpoint 1
 
 Scores follow the [Checkpoint 1 rubric](projects.md#checkpoint-1-an-honest-first-model)
